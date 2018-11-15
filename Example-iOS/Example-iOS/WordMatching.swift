@@ -10,6 +10,7 @@ import Foundation
 
 import Mendel
 
+/*
 class WordMatchingLab {
     init() {
         
@@ -182,3 +183,4 @@ extension String {
 func tabulate<A>(times: Int, f: Int -> A) -> [A] {
     return (0..<times).map(f)
 }
+ */

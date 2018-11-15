@@ -14,9 +14,9 @@ import UIKit
 import Mendel
 
 public class ImageMatchingLab {
-    var referenceImageURL: NSURL!
+    var referenceImageURL: URL!
     var outputImageSize: CGSize?
-    var output: ((CGImageRef, Int) -> Void)?
+    var output: ((CGImage, Int) -> Void)?
     
     var engine: SimpleEngine<Painting>?
     
@@ -26,13 +26,18 @@ public class ImageMatchingLab {
     func doScience() {
         var engine = SimpleEngine<Painting>(
             //125 triangles
-            factory: { return Painting.arbitraryOfLength(125) },
-            evaluation: distanceFromTargetImageAtURL(self.referenceImageURL),
+            factory: { ()->Painting in return Painting.arbitraryOfLength(length: 125) },
+            evaluation: distanceFromTargetImageAtURL(imageURL: self.referenceImageURL),
             fitnessKind: FitnessKind.Inverted,
             selection: Selections.RouletteWheel,
             //Mutation is at 100%, since we control the by-gene probabilities
             //at the individual level
-            op: Operators.Parallel(batchSize: 10)(op: Operators.Crossover(0.5) >>> Operators.Mutation(1))
+            op: { (pop:[Painting])->[Painting] in
+                var newPop = Operators.Crossover(probability: 0.5, pop: pop)
+                newPop = Operators.Mutation(probability: 1.0, pop: newPop)
+                return newPop
+            }
+            //Operators.Parallel(batchSize: 10)(op: Operators.Crossover(0.5) >>> Operators.Mutation(1))
         )
         self.engine = engine
         
@@ -49,7 +54,7 @@ public class ImageMatchingLab {
             let best = data.bestCandidate
             
             if let size = self.outputImageSize {
-                self.output?(best.imageOfSize(size), data.iterationNum)
+                self.output?(best.imageOfSize(size: size), data.iterationNum)
             }
         }
         
@@ -71,11 +76,11 @@ struct Painting : IndividualType {
         self.genes = genes
     }
     
-    func drawInContext(context: CGContextRef, size: CGSize) {
-        CGContextSetFillColorWithColor(context, UIColor.blackColor().CGColor)
-        CGContextFillRect(context, CGRect(origin: CGPointZero, size: size))
+    func drawInContext(context: CGContext, size: CGSize) {
+        context.setFillColor(UIColor.black.cgColor)
+        context.fill(CGRect(origin: CGPoint.zero, size: size))
         for gene in self.genes {
-            gene.drawInContext(context, size: size)
+            gene.drawInContext(context: context, size: size)
         }
     }
 }
@@ -84,10 +89,11 @@ struct Gene {
     let color: Color
     let triangle: Triangle
     
-    func drawInContext(context: CGContextRef, size: CGSize) {
+    func drawInContext(context: CGContext, size: CGSize) {
         //        CGContextSaveGState(context)
-        CGContextSetRGBFillColor(context, CGFloat(color.r)/255, CGFloat(color.g)/255, CGFloat(color.b)/255, CGFloat(color.a)/255)
-        triangle.drawInContext(context, size:size)
+        //CGContextSetRGBFillColor(context, CGFloat(color.r)/255, CGFloat(color.g)/255, CGFloat(color.b)/255, CGFloat(color.a)/255)
+        context.setFillColor(red: CGFloat(color.r)/255, green: CGFloat(color.g)/255, blue: CGFloat(color.b)/255, alpha: CGFloat(color.a)/255)
+        triangle.drawInContext(context: context, size:size)
         //        CGContextRestoreGState(context)
     }
 }
@@ -101,18 +107,16 @@ struct Triangle {
     let b: CGPoint
     let c: CGPoint
     
-    func drawInContext(context: CGContextRef, size: CGSize) {
-        let sA = self.a.scaledUnitPoint(size)
-        let sB = self.b.scaledUnitPoint(size)
-        let sC = self.c.scaledUnitPoint(size)
+    func drawInContext(context: CGContext, size: CGSize) {
+        let sA = self.a.scaledUnitPoint(size: size)
+        let sB = self.b.scaledUnitPoint(size: size)
+        let sC = self.c.scaledUnitPoint(size: size)
         
-        //        CGContextSaveGState(context);
-        CGContextMoveToPoint(context, sA.x, sA.y);
-        CGContextAddLineToPoint(context, sB.x, sB.y);
-        CGContextAddLineToPoint(context, sC.x, sC.y);
-        CGContextClosePath(context);
-        CGContextFillPath(context);
-        //        CGContextRestoreGState(context);
+        context.move(to: CGPoint(x: sA.x, y: sA.y))
+        context.addLine(to: CGPoint(x: sB.x, y: sB.y))
+        context.addLine(to: CGPoint(x: sC.x, y: sC.y))
+        context.closePath();
+        context.fillPath();
     }
 }
 
@@ -126,24 +130,25 @@ extension CGPoint {
 
 //TODO: Generalize finite sequence based crossover
 extension Painting : Crossoverable {
-    static func cross(parent1: Painting, _ parent2: Painting) -> [Painting] {
+    static func cross(parent1: Painting, parent2: Painting) -> [Painting] {
         let wordA = parent1.genes
         let wordB = parent2.genes
         
-        let c = count(wordA)
+        let c = wordA.count
         var p1 = Int(arc4random_uniform(UInt32(c)))
         var p2 = Int(arc4random_uniform(UInt32(c)))
         if (p1 > p2) {
             swap(&p1, &p2)
         }
         
-        let subRange = Range<Int>(start: p1, end: p2)
+        //let subRange = Range<Int>(start: p1, end: p2)
+        let subRange = p1..<p2
         var childB = wordB
-        childB.replaceRange(subRange, with: wordA[subRange])
+        childB.replaceSubrange(subRange, with: wordA[subRange])
         var childA = wordA
-        childA.replaceRange(subRange, with: wordB[subRange])
+        childA.replaceSubrange(subRange, with: wordB[subRange])
         
-        return [self(childA), self(childB)]
+        return [self.init(childA), self.init(childB)]
     }
 }
 
@@ -153,8 +158,8 @@ extension Painting : Mutatable {
         var dna = [Gene]()
         dna.reserveCapacity(individual.genes.count)
         for gene in individual.genes {
-            if roll(0.1) {
-                dna.append(Gene.mutate(gene))
+            if roll(probability: 0.1) {
+                dna.append(Gene.mutate(individual: gene))
             } else {
                 dna.append(gene)
             }
@@ -166,8 +171,8 @@ extension Painting : Mutatable {
 
 extension Gene : Mutatable {
     @inline(__always) static func mutate(individual: Gene) -> Gene {
-        let color = roll(0.1) ? Color.mutate(individual.color) : Color.drift(individual.color)
-        let triangle = roll(0.1) ? Triangle.mutate(individual.triangle) : Triangle.drift(individual.triangle)
+        let color = roll(probability: 0.1) ? Color.mutate(individual: individual.color) : Color.drift(individual: individual.color)
+        let triangle = roll(probability: 0.1) ? Triangle.mutate(individual: individual.triangle) : Triangle.drift(individual: individual.triangle)
         
         return Gene(color: color, triangle: triangle)
     }
@@ -211,9 +216,9 @@ extension Triangle {
     }
     
     @inline(__always) static func drift(individual: Triangle) -> Triangle {
-        let mA = CGPoint.drift(individual.a)
-        let mB = CGPoint.drift(individual.b)
-        let mC = CGPoint.drift(individual.c)
+        let mA = CGPoint.drift(individual: individual.a)
+        let mB = CGPoint.drift(individual: individual.b)
+        let mC = CGPoint.drift(individual: individual.c)
         
         return Triangle(a: mA, b: mB, c: mC)
     }
@@ -245,34 +250,38 @@ private func distance(a: Pixel, b: Pixel) -> Fitness {
     return r*r + g*g + b*b
 }
 
-private func distanceFromTargetImageAtURL(imageURL: NSURL) -> (Painting, [Painting]) -> Fitness {
-    let dataProvider = CGDataProviderCreateWithURL(imageURL)
+private func distanceFromTargetImageAtURL(imageURL: URL) -> (Painting, [Painting]) -> Fitness {
+    guard let dataProvider = CGDataProvider(url: imageURL as CFURL) else {
+        fatalError("data provider")
+    }
     let options = [
-        (kCGImageSourceThumbnailMaxPixelSize as NSString): 75 as CFNumberRef,
-        (kCGImageSourceCreateThumbnailFromImageIfAbsent as NSString): true
-    ]
+        (kCGImageSourceThumbnailMaxPixelSize as String): 75 as CFNumber,
+        (kCGImageSourceCreateThumbnailFromImageIfAbsent as String): true
+        ] as [String : Any]
     
-    let imageSource = CGImageSourceCreateWithDataProvider(dataProvider, options)
+    guard let imageSource = CGImageSourceCreateWithDataProvider(dataProvider, options as CFDictionary) else {
+        fatalError("image source")
+    }
     
     var count = CGImageSourceGetCount(imageSource)
     
-    let targetImage = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, options)!
-    let img = UIImage(CGImage: targetImage)!
+    let targetImage = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, options as CFDictionary)!
+    let img = UIImage(cgImage: targetImage)
     
     let colorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB()
-    let bitmapInfo = CGBitmapInfo(CGImageAlphaInfo.NoneSkipLast.rawValue)
+    let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.noneSkipLast.rawValue)
     let width  = Int( targetImage.width )
     let height = Int(  targetImage.height )
     let bytesPerRow = width * 4
     
     let length = Int(width)*Int(height)
 
-    let buffer = UnsafeMutablePointer<Pixel>.alloc(length)
-    let targetcontext = CGBitmapContextCreate(buffer, width, height, 8, bytesPerRow, colorSpace, bitmapInfo)
-    CGContextSetFillColorWithColor(targetcontext, UIColor.blackColor().CGColor)
-    CGContextDrawImage(targetcontext, CGRect(origin: CGPointZero, size: targetImage.size), targetImage)
-    
-    let distance = distanceFromTargetImageData(buffer, withSize: targetImage.size)
+    let buffer = UnsafeMutablePointer<Pixel>.allocate(capacity: length)
+    let targetcontext = CGContext(data: buffer, width: width, height: height, bitsPerComponent: 8, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)!
+    targetcontext.setFillColor(UIColor.black.cgColor)
+    targetcontext.draw(targetImage, in: CGRect(origin: CGPoint.zero, size: targetImage.size))
+
+    let distance = distanceFromTargetImageData(targetData: buffer, withSize: targetImage.size)
     
     return distance
 }
@@ -280,23 +289,22 @@ private func distanceFromTargetImageAtURL(imageURL: NSURL) -> (Painting, [Painti
 private func distanceFromTargetImageData(targetData: UnsafeMutablePointer<Pixel>, withSize size: CGSize) -> (Painting, [Painting]) -> Fitness {
     return { painting, _ in
         let colorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB()
-        let bitmapInfo = CGBitmapInfo(CGImageAlphaInfo.NoneSkipLast.rawValue)
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.noneSkipLast.rawValue)
         let width = Int(size.width)
         let height = Int(size.height)
         let bytesPerRow = Int(width) * 4
         
-        let context = CGBitmapContextCreate(nil, width, height, 8, bytesPerRow, colorSpace, bitmapInfo)
-//        CGContextSetShouldAntialias(context, false);
-        painting.drawInContext(context, size: size)
+        let context = CGContext(data: nil, width: width, height: height, bitsPerComponent: 8, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)!
+        painting.drawInContext(context: context, size: size)
         
-        var data = unsafeBitCast(CGBitmapContextGetData(context), UnsafeMutablePointer<Pixel>.self)
+        var data = unsafeBitCast((context.data)!, to: UnsafeMutablePointer<Pixel>.self)
         
         var sum = 0.0
-        for var y = 0; y < height; ++y {
-            for var x = 0; x < width; ++x {
+        for y in 0..<height {
+            for x in 0..<width {
                 let targetpx = targetData[Int(x + y * width)]
                 let px = data[Int(x + y * width)]
-                let dist = distance(targetpx, px)
+                let dist = distance(a: targetpx, b: px)
                 sum += dist
             }
         }
@@ -309,16 +317,16 @@ private func distanceFromTargetImageData(targetData: UnsafeMutablePointer<Pixel>
 //MARK: Rendering
 
 extension Painting {
-    func imageOfSize(size: CGSize) -> CGImageRef {
+    func imageOfSize(size: CGSize) -> CGImage {
         let colorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB()
-        let bitmapInfo = CGBitmapInfo(CGImageAlphaInfo.NoneSkipLast.rawValue)
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.noneSkipLast.rawValue)
         let width = Int(size.width)
         let height = Int(size.height)
         let bytesPerRow = Int(width) * 4
-        let context = CGBitmapContextCreate(nil, width, height, 8, bytesPerRow, colorSpace, bitmapInfo)
+        let context = CGContext(data: nil, width: width, height: height, bitsPerComponent: 8, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)!
 //        CGContextSetShouldAntialias(context, false);
-        self.drawInContext(context, size: size)
-        return CGBitmapContextCreateImage(context)
+        self.drawInContext(context: context, size: size)
+        return context.makeImage()!
     }
 }
 
@@ -330,7 +338,13 @@ extension Painting {
             return Gene.arbitrary()
         }
         
-        return self(dna)
+        return self.init(dna)
+    }
+}
+
+extension CGImage {
+    public var size: CGSize {
+        return CGSize(width: self.width, height: self.height)
     }
 }
 
@@ -339,7 +353,7 @@ extension Gene {
         let color = Color.arbitrary()
         let triangle = Triangle.arbitrary()
         
-        return self(color: color, triangle: triangle)
+        return self.init(color: color, triangle: triangle)
     }
 }
 
@@ -356,7 +370,7 @@ extension UInt8 {
 }
 
 extension CGFloat {
-    @inline(__always) static func random(#from:CGFloat, to: CGFloat) -> CGFloat {
+    @inline(__always) static func random(from:CGFloat, to: CGFloat) -> CGFloat {
         return from + (to-from)*(CGFloat(arc4random()) / CGFloat(UInt32.max))
     }
     
@@ -366,27 +380,11 @@ extension CGFloat {
 }
 
 extension CGPoint {
-    @inline(__always) static func random(#from:CGFloat, to: CGFloat) -> CGPoint {
+    @inline(__always) static func random(from:CGFloat, to: CGFloat) -> CGPoint {
         return CGPoint(x: CGFloat.random(from: from, to: to), y: CGFloat.random(from: from, to: to))
     }
     
     @inline(__always) static func randomUnit() -> CGPoint {
         return self.random(from: -0.5, to: 1.5)
-    }
-}
-
-//MARK: Utilities
-
-extension CGImageRef {
-    var size: CGSize {
-        return CGSize(width: CGFloat(CGImageGetWidth(self)), height: CGFloat(CGImageGetHeight(self)))
-    }
-    
-    var height: Int {
-        return CGImageGetHeight(self)
-    }
-    
-    var width: Int {
-        return CGImageGetWidth(self)
     }
 }

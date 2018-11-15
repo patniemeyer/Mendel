@@ -6,29 +6,15 @@
 
 import Foundation
 
-//The compose operator provides function composition.
-func >>> <A, B, C>(f: A -> B, g: B -> C) -> A -> C {
-    return { x in g(f(x)) }
-}
-
-//Shuffle collection
-func shuffle<C: MutableCollectionType where C.Index == Int>(var list: C) -> C {
-    let c = count(list)
-    for i in 0..<(c - 1) {
-        let j = Int(arc4random_uniform(UInt32(c - i))) + i
-        swap(&list[i], &list[j])
-    }
-    return list
-}
-
 //The iterateWhile function repeatedly applies a function while the condition holds.
-func iterateWhile<A>(condition: A -> Bool,
+@discardableResult
+func iterateWhile<A>(condition: (A) -> Bool,
     initialValue: A,
-    next: A -> A?) -> A {
+    next: (A) -> A?) -> A {
         
         if let x = next(initialValue) {
             if condition(x) {
-                return iterateWhile(condition, x, next)
+                return iterateWhile(condition: condition, initialValue: x, next: next)
             }
         }
         return initialValue
@@ -37,7 +23,7 @@ func iterateWhile<A>(condition: A -> Bool,
 //Taken from https://gist.github.com/josephlord/e6298c724c0edadc3042#file-scanl1-swift
 func scanl1<A>(input:[A], combiningF:(A,A)->A)->[A] {
     var running:A? = nil
-    return map(input) { (nv:A)->A in
+    return input.map { (nv:A)->A in
         if let curr:A = running {
             let newVal = combiningF(curr, nv)
             running = newVal
@@ -49,12 +35,12 @@ func scanl1<A>(input:[A], combiningF:(A,A)->A)->[A] {
     }
 }
 
-func insertionPoint<C : CollectionType where C.Generator.Element : Comparable, C.Index == Int>(domain: C, searchItem: C.Generator.Element) -> C.Index {
+func insertionPoint<C : Collection>(domain: C, searchItem: C.Element) -> C.Index where C.Element : Comparable, C.Index == Int {
     var lowerIndex = domain.startIndex
     var upperIndex = domain.endIndex - 1
     
     while (true) {
-        var currentIndex = (lowerIndex + upperIndex)/2
+        let currentIndex = (lowerIndex + upperIndex)/2
         let item = domain[currentIndex]
         
         if (domain[currentIndex] == searchItem) {
@@ -63,24 +49,12 @@ func insertionPoint<C : CollectionType where C.Generator.Element : Comparable, C
             return lowerIndex
         } else {
             if (domain[currentIndex] > searchItem) {
-                upperIndex = currentIndex.predecessor()
+                //upperIndex = currentIndex.predecessor()
+                upperIndex = currentIndex - 1
             } else {
-                lowerIndex = currentIndex.successor()
+                //lowerIndex = currentIndex.successor()
+                lowerIndex = currentIndex + 1
             }
         }
     }
-}
-
-infix operator >>> {
-associativity left
-}
-
-infix operator &&& {
-associativity left
-precedence 120
-}
-
-infix operator ||| {
-associativity left
-precedence 120
 }

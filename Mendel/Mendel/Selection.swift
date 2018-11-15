@@ -9,14 +9,14 @@
 import Foundation
 
 public struct Selections {
-    public static func Truncation<I : IndividualType>(truncationPoint: Double)(pop: [Score<I>], fitnessKind: FitnessKind, count: Int) -> [I] {
-        let truncationCount = Int(floor(truncationPoint * Double(pop.count)))
+    public static func Truncation<I : IndividualType>(truncationPoint: Double, pop: [Score<I>], fitnessKind: FitnessKind, count: Int) -> [I] {
+        //let truncationCount = Int(floor(truncationPoint * Double(pop.count)))
         
         let slice = pop[0..<count]
         
         let result = Array(slice)
         
-        return map(result) { $0.individual }
+        return result.map { $0.individual }
     }
     
     public static func Random<I : IndividualType>(pop: [Score<I>], fitnessKind: FitnessKind, count: Int) -> [I] {
@@ -29,16 +29,16 @@ public struct Selections {
         return selected
     }
     
-    public static func Tournament<I : IndividualType>(size: Int)(pop: [Score<I>], fitnessKind: FitnessKind, count: Int) -> [I] {
+    public static func Tournament<I : IndividualType>(size: Int, pop: [Score<I>], fitnessKind: FitnessKind, count: Int) -> [I] {
         var selection = [I]()
         
         let sortLambda = { (a: Score<I>, b:Score<I>) -> Bool in
-            return fitnessKind.comparisonOp(lhs: a.fitness, rhs: b.fitness)
+            return fitnessKind.comparisonOp(a.fitness, b.fitness)
         }
         
-        iterateWhile({ return $0 < count }, 0) { i in
+      iterateWhile(condition: { return $0 < count }, initialValue: 0) { i in
             let individuals = (0..<size).map { _ -> Score<I> in return pickRandom(from: pop) }
-            let sorted = individuals.sorted(sortLambda)
+            let sorted = individuals.sorted(by: sortLambda)
             selection.append(sorted.first!.individual)
             
             return selection.count
@@ -50,15 +50,15 @@ public struct Selections {
     public static func RouletteWheel<I : IndividualType>(pop: [Score<I>], fitnessKind: FitnessKind, count: Int) -> [I] {
         let fitnesses = pop.map { $0.fitness }
         
-        let cumulative = scanl1(fitnesses) { acc, val -> Double in
-            acc + fitnessKind.adjustedFitness(val)
+        let cumulative = scanl1(input: fitnesses) { acc, val -> Double in
+            acc + fitnessKind.adjustedFitness(fitness: val)
         }
         
         var selection = [I]()
         
         while selection.count < count {
             let randomFitness = Double(randomP()) * cumulative.last!
-            let idx = insertionPoint(fitnesses, randomFitness)
+            let idx = insertionPoint(domain: fitnesses, searchItem: randomFitness)
             selection.append(pop[idx].individual)
         }
         
@@ -67,12 +67,12 @@ public struct Selections {
     
     public static func StochasticUniversalSampling<I : IndividualType>(pop: [Score<I>], fitnessKind: FitnessKind, count: Int) -> [I] {
         let adjustedFitnesses = pop.map { score -> Fitness in
-            return fitnessKind.adjustedFitness(score.fitness)
+            return fitnessKind.adjustedFitness(fitness: score.fitness)
         }
         
-        let sum = adjustedFitnesses.reduce(0, combine: (+))
-        
-        let startOffset = Double(random(from: 0.0, to: 1.0))
+        let sum = adjustedFitnesses.reduce(0, +)
+
+        let startOffset = Double.random(in: 0...1)
         
         var cumulativeExpectation: Double = 0
         
@@ -81,12 +81,12 @@ public struct Selections {
         var selection = [I]()
         
         for score in pop {
-            let adjusted = fitnessKind.adjustedFitness(score.fitness)
+            let adjusted = fitnessKind.adjustedFitness(fitness: score.fitness)
             cumulativeExpectation += adjusted / sum * Double(count)
             
             while (cumulativeExpectation > startOffset + Double(idx)) {
                 selection.append(score.individual);
-                idx++;
+                idx+=1
             }
         }
         
@@ -102,11 +102,11 @@ public struct Selections {
         let stdev = stats.stdev
         
         let scaledPop = pop.map { score -> Score<I> in
-            let scaled = self.sigmaScaled(score.fitness, mean: mean, stdev: stdev)
+            let scaled = self.sigmaScaled(fitness: score.fitness, mean: mean, stdev: stdev)
             return Score<I>(fitness: scaled, individual: score.individual)
         }
         
-        return StochasticUniversalSampling(scaledPop, fitnessKind: fitnessKind, count: count)
+        return StochasticUniversalSampling(pop: scaledPop, fitnessKind: fitnessKind, count: count)
     }
     
     private static func sigmaScaled(fitness: Double, mean: Double, stdev: Double) -> Double {
@@ -119,11 +119,12 @@ public struct Selections {
     }
     
     public static func RankSelection<I : IndividualType>(pop: [Score<I>], fitnessKind: FitnessKind, count: Int) -> [I] {
-        let mappedPop = map(enumerate(pop)) { idx, score -> Score<I> in
-            return Score(fitness: self.rankMapped(idx+1, populationSize: pop.count), individual: score.individual)
+        let mappedPop = (pop.enumerated()).map { (arg) -> Score<I> in
+            let (idx, score) = arg
+            return Score(fitness: self.rankMapped(rank: idx+1, populationSize: pop.count), individual: score.individual)
         }
         
-        return StochasticUniversalSampling(mappedPop, fitnessKind: fitnessKind, count: count)
+        return StochasticUniversalSampling(pop: mappedPop, fitnessKind: fitnessKind, count: count)
     }
     
     private static func rankMapped(rank: Int, populationSize: Int) -> Double {

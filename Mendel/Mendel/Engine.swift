@@ -11,15 +11,16 @@ import Foundation
 //MARK: Core Types
 
 //Types of individuals to be evolved have to conform to this type
-public protocol IndividualType {
-}
+public protocol IndividualType { }
 
 //The Genetic Engine protocol
 public protocol Engine {
     //The type that's being evolved
-    typealias Individual : IndividualType
+    associatedtype Individual : IndividualType
+    
     //A collection of Individuals
     typealias Population = [Individual]
+    
     //A collection of Individuals and their respective fitness scores
     typealias EvaluatedPopulation = [Score<Individual>]
     
@@ -36,10 +37,10 @@ public protocol Engine {
     typealias Selection = (EvaluatedPopulation, FitnessKind, Int) -> Population
     
     //The Genetic Operator that is going to be called to modify the selected Population
-    typealias Operator = Population -> Population
+    typealias Operator = (Population) -> Population
     
     //Termination predicate. When it returns yes, the evolution process is stopped
-    typealias Termination = IterationData<Individual> -> Bool
+    typealias Termination = (IterationData<Individual>) -> Bool
     
     ////////////////////////////////////////////////////////////////////////////
     
@@ -56,7 +57,7 @@ public protocol Engine {
     var termination: Termination? { get }
     
     //Called after each evolution step. Useful to update UI/inform user.
-    var iteration: (IterationData<Individual> -> Void)? { get }
+    var iteration: ((IterationData<Individual>) -> Void)? { get }
     
     //Starts the evolution process. This is a blocking call, it won't return until
     //`termination` returns true – make sure you aren't blocking UI.
@@ -69,7 +70,7 @@ public enum FitnessKind {
     case Natural
     case Inverted
     
-    var comparisonOp:(lhs: Fitness, rhs: Fitness) -> Bool {
+    var comparisonOp:(_ lhs: Fitness, _ rhs: Fitness) -> Bool {
         switch self {
         case .Natural :
             return (>)
@@ -94,7 +95,7 @@ public enum FitnessKind {
 
 public typealias Fitness = Double
 //Represents an evaluated individual
-public struct Score<Individual : IndividualType> : Printable {
+public struct Score<Individual : IndividualType> : CustomStringConvertible {
     let fitness: Fitness
     let individual: Individual
     
@@ -103,7 +104,7 @@ public struct Score<Individual : IndividualType> : Printable {
     }
     
     func fitterIndividual(fitnessKind:FitnessKind, other: Score<Individual>) -> Individual {
-        if fitnessKind.comparisonOp(lhs: self.fitness, rhs: other.fitness) {
+        if fitnessKind.comparisonOp(self.fitness, other.fitness) {
             return self.individual
         } else {
             return other.individual
@@ -112,7 +113,7 @@ public struct Score<Individual : IndividualType> : Printable {
 }
 
 //Provides various stats regarding the current state of evolution
-public struct IterationData<I : IndividualType> : Printable {
+public struct IterationData<I : IndividualType> : CustomStringConvertible {
     init(iterationNum: Int, pop:[Score<I>], fitnessKind: FitnessKind, config: Configuration) {
         self.iterationNum = iterationNum
         
@@ -157,56 +158,57 @@ public func primordialSoup<I : IndividualType>(size: Int, factory:()->I) -> [I] 
 //Evaluates the population using the provided evaluation function
 //This used to be a nice little function but got really ugly after being modified to
 //support concurrent computation by partitioning the population
-public func evaluatePopulation<I : IndividualType>(population: [I], withStride stride: Int, evaluation:(I, [I]) -> Fitness) -> [Score<I>] {
-    let queue = dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)
+public func evaluatePopulation<I : IndividualType>(population: [I], withStride stride: Int, evaluation:@escaping (I, [I]) -> Fitness) -> [Score<I>] {
+    let queue = DispatchQueue.global()
     
-    var scores = [Score<I>]()
+    var scores: [Score<I>] = [Score<I>]()
     scores.reserveCapacity(population.count)
     
-    let writeQueue = dispatch_queue_create("scores write queue", DISPATCH_QUEUE_SERIAL)
+    let writeQueue = DispatchQueue(label: "scores write queue")
     
-    let group = dispatch_group_create()
+    let group = DispatchGroup()
     
     //TODO: write this in a more swifty way
     let iterations = Int(population.count/stride)
     func evaluatePopulationClosure(idx: Int) -> (Void) {
         var j = Int(idx) * stride
         let j_stop = j + stride
-        do {
-            dispatch_group_enter(group)
+        repeat {
+            group.enter()
             let ind = population[j]
             let fitness = evaluation(ind, population)
-            dispatch_async(writeQueue) {
+            writeQueue.async() {
                 scores.append(Score(fitness: fitness, individual: ind))
-                dispatch_group_leave(group)
+                group.leave()
             }
-            j++
+            j+=1
         } while (j < j_stop);
     }
-    dispatch_apply(iterations, queue, evaluatePopulationClosure)
+    DispatchQueue.concurrentPerform(iterations: iterations, execute: evaluatePopulationClosure)
+    
     //handle the remainder
-    dispatch_group_enter(group)
-    dispatch_async(queue) {
+    group.enter()
+    queue.async() {
         let startIdx = Int(iterations) * stride
-        let remainder = lazy(population[startIdx..<population.count]).map { ind -> Score<I> in
-            return Score(fitness: evaluation(ind, population), individual: ind)
+        let remainder: [Score<I>] = (population[startIdx..<population.count]).map { ind -> Score<I> in return Score(fitness: evaluation(ind, population), individual: ind)
         }
-        dispatch_async(writeQueue) {
-            scores.extend(remainder)
-            dispatch_group_leave(group)
+        
+        writeQueue.async() {
+            scores.append(contentsOf: remainder)
+            group.leave()
         }
     }
     
-    dispatch_group_wait(group, DISPATCH_TIME_FOREVER)
-    
+    _ = group.wait(timeout: DispatchTime.distantFuture)
+
     return scores
 }
 
 //Sorts the evaluated population based on the provided fitness kind
 public func sortEvaluatedPopulation<I : IndividualType>(population: [Score<I>], fitnessKind:FitnessKind) -> [Score<I>] {
-    let sorted = population.sorted { return fitnessKind.comparisonOp(lhs: $0.fitness, rhs: $1.fitness) }
+    let sorted = population.sorted { return fitnessKind.comparisonOp($0.fitness, $1.fitness) }
     
-    let fitnesses = population.map { $0.fitness }
+    //let fitnesses = population.map { $0.fitness }
     
     return sorted
 }
@@ -221,18 +223,18 @@ public class SimpleEngine<I : IndividualType> : Engine {
     //TODO: find out why
     
     //MARK: Engine
-    typealias Individual = I
+    public typealias Individual = I
     
-    typealias Factory = () -> Individual
+    public typealias Factory = () -> Individual
     
-    typealias Population = [Individual]
-    typealias EvaluatedPopulation = [Score<Individual>]
+    public typealias Population = [Individual]
+    public typealias EvaluatedPopulation = [Score<Individual>]
     
-    typealias Evaluation = (Individual, Population) -> Fitness
-    typealias Operator = Population -> Population
-    typealias Selection = (EvaluatedPopulation, FitnessKind, Int) -> Population
+    public typealias Evaluation = (Individual, Population) -> Fitness
+    public typealias Operator = (Population) -> Population
+    public typealias Selection = (EvaluatedPopulation, FitnessKind, Int) -> Population
     
-    typealias Termination = IterationData<Individual> -> Bool
+    public typealias Termination = (IterationData<Individual>) -> Bool
     
     public let factory: Factory
     public let fitnessKind: FitnessKind
@@ -243,15 +245,16 @@ public class SimpleEngine<I : IndividualType> : Engine {
     
     public var termination: Termination?
     
-    public var iteration: (IterationData<Individual> -> Void)?
+    public var iteration: ((IterationData<Individual>) -> Void)?
     
     ////////////////////////////////////////////////////////////////////////////
     
-    public init(factory: Factory,
-        evaluation: Evaluation,
+    public init(
+        factory: @escaping Factory,
+        evaluation: @escaping Evaluation,
         fitnessKind: FitnessKind,
-        selection: Selection,
-        op: Operator) {
+        selection: @escaping Selection,
+        op: @escaping Operator) {
             self.factory = factory
             self.evaluation = evaluation
             self.fitnessKind = fitnessKind
@@ -266,10 +269,10 @@ public class SimpleEngine<I : IndividualType> : Engine {
     //while the evolution is running.
     //TODO: Clean up the implementation (avoid repetition, more functional style...)
     public func evolve() -> Individual {
-        let pop = primordialSoup(self.config.size, self.factory)
+        let pop = primordialSoup(size: self.config.size, factory: self.factory)
         
-        var evaluatedPop = evaluatePopulation(pop, withStride:25, self.evaluation)
-        var sortedEvaluatedPop = sortEvaluatedPopulation(evaluatedPop, self.fitnessKind)
+        var evaluatedPop = evaluatePopulation(population: pop, withStride:25, evaluation: self.evaluation)
+        var sortedEvaluatedPop = sortEvaluatedPopulation(population: evaluatedPop, fitnessKind: self.fitnessKind)
         
         var iterationIdx = 0
         
@@ -277,11 +280,11 @@ public class SimpleEngine<I : IndividualType> : Engine {
         self.iteration?(data)
         
         while (self.termination == nil || self.termination!(data) == false) {
-            evaluatedPop = step(sortedEvaluatedPop)
+            evaluatedPop = step(pop: sortedEvaluatedPop)
 
-            sortedEvaluatedPop = sortEvaluatedPopulation(evaluatedPop, self.fitnessKind)
+            sortedEvaluatedPop = sortEvaluatedPopulation(population: evaluatedPop, fitnessKind: self.fitnessKind)
             
-            iterationIdx++
+            iterationIdx+=1
             
             data = IterationData(iterationNum: iterationIdx, pop: sortedEvaluatedPop, fitnessKind: self.fitnessKind, config: self.config)
             self.iteration?(data)
@@ -292,7 +295,8 @@ public class SimpleEngine<I : IndividualType> : Engine {
     
     //Evolution iteration logic
     func step(pop: EvaluatedPopulation) -> EvaluatedPopulation {
-        let elites = map(pop[0..<self.config.eliteCount]) { $0.individual }
+        //let elites = map(pop[0..<self.config.eliteCount]) { $0.individual }
+        let elites = (pop[0..<self.config.eliteCount]).map { $0.individual }
         
         let normalCount = pop.count - elites.count
         
@@ -300,7 +304,7 @@ public class SimpleEngine<I : IndividualType> : Engine {
 
         //TODO: parametrize?
         while selectedPop.count < normalCount {
-            selectedPop += Selections.Random(pop, fitnessKind: self.fitnessKind, count: normalCount - selectedPop.count)
+            selectedPop += Selections.Random(pop: pop, fitnessKind: self.fitnessKind, count: normalCount - selectedPop.count)
         }
         
         var mutatedPop = self.op(Array(selectedPop[0..<selectedPop.count]))
@@ -312,7 +316,7 @@ public class SimpleEngine<I : IndividualType> : Engine {
         
         let newPop = elites + mutatedPop
         
-        let newEvaluatedPop = evaluatePopulation(newPop, withStride:25, self.evaluation)
+        let newEvaluatedPop = evaluatePopulation(population: newPop, withStride:25, evaluation: self.evaluation)
         
         return newEvaluatedPop
     }

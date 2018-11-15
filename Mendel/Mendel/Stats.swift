@@ -22,8 +22,8 @@ public class Stats {
     public final var maximum: Double = Double(Int.min)
     
     public final var median: Double {
-        let sortedData = self.data.sorted(<)
-        
+        let sortedData = self.data.sorted(by: <)
+
         let mid = sortedData.count / 2
         
         if (sortedData.count % 2 != 0) {
@@ -48,7 +48,7 @@ public class Stats {
     public final var meanDeviation: Double {
         let mean = self.arithmeticMean
         
-        let diffs = reduce(self.data, 0) { acc, val -> Double in
+        let diffs = self.data.reduce(0) { acc, val -> Double in
             return acc + abs(mean - val)
         }
         
@@ -62,7 +62,7 @@ public class Stats {
     public final func sumSquaredDiffs() -> Double {
         let mean = self.arithmeticMean
         
-        return self.data.reduce(0, combine: { (acc, val) -> Double in
+        return self.data.reduce(0, { (acc, val) -> Double in
             let diff = mean - val
             return acc + (diff * diff)
         })
@@ -82,18 +82,18 @@ public class Stats {
     
     private var data = [Double]()
     
-    public init<C : CollectionType where C.Generator.Element == Double>(_ col: C) {
+    public init<C : Collection>(_ col: C) where C.Element == Double {
         let arr = Array(col)
         self.data = arr
         
         for v in col {
-            self.updateWithValue(v)
+            self.updateWithValue(val: v)
         }
     }
     
     public final func addValue(val: Double) {
         self.data.append(val)
-        self.updateWithValue(val)
+        self.updateWithValue(val: val)
     }
     
     private final func updateWithValue(val: Double) {

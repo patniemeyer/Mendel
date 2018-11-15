@@ -17,7 +17,7 @@ class ImageMatchingViewController: UIViewController {
     
     var lab = ImageMatchingLab()
     
-    let url = NSBundle.mainBundle().URLForResource("mona-lisa", withExtension: "jpg")!
+    let url = Bundle.main.url(forResource: "mona-lisa", withExtension: "jpg")!
     
     let image = UIImage(named: "mona-lisa.jpg")
     
@@ -36,14 +36,14 @@ class ImageMatchingViewController: UIViewController {
         self.lab.outputImageSize = image?.size
         
         self.lab.output = { image, iter in
-            dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                self.bestIndividualImageView.image = UIImage(CGImage: image)
+            DispatchQueue.main.async {
+                self.bestIndividualImageView.image = UIImage(cgImage: image)
                 self.iterationLabel.text = "\(iter)"
                 self.iterationLabel.text = "\(iter)"
             }
         }
         
-        dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)) { () -> Void in
+        DispatchQueue.global().async { () -> Void in
             self.lab.doScience()
         }
     }

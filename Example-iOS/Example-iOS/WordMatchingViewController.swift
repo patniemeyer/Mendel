@@ -8,6 +8,7 @@
 
 import UIKit
 
+/*
 class WordMatchingViewController: UIViewController {
     @IBOutlet weak var targetTextField: UITextField!
     @IBOutlet weak var targetLabel: UILabel!
@@ -44,3 +45,4 @@ class WordMatchingViewController: UIViewController {
 }
 
 
+ */

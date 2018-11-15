@@ -10,11 +10,11 @@ import Foundation
 
 public typealias Probability = Float
 
-@inline(__always) public func coinFlip() -> Bool {
+public func coinFlip() -> Bool {
     return arc4random_uniform(2) == 0
 }
 
-@inline(__always) public func roll(probability: Probability) -> Bool {
+public func roll(probability: Probability) -> Bool {
     if (probability == 1.0) {
         return true
     } else if (probability == 0.0) {
@@ -25,46 +25,47 @@ public typealias Probability = Float
     return probability > roll
 }
 
-@inline(__always) func randomP() -> Probability {
-    return random(from:0.0, to: 1.0)
+func randomP() -> Probability {
+    return Probability.random(in: 0.0...1.0)
 }
 
-@inline(__always) func random(#from: Int, #to: Int) -> Int {
-    return from + Int(arc4random_uniform(UInt32(to-from)))
+func random(from: Int, to: Int) -> Int {
+    return Int.random(in: from...to)
 }
 
-@inline(__always) func random(#from:Float, #to: Float) -> Float {
-    return from + (to-from)*(Float(arc4random()) / Float(UInt32.max))
+func random(from:Float, to: Float) -> Float {
+    return Float.random(in: from...to)
 }
 
-@inline(__always) func random(#from:Double, #to: Double) -> Double {
-    return from + (to-from)*(Double(arc4random()) / Double(UInt32.max))
+func random(from:Double, to: Double) -> Double {
+    return Double.random(in: from...to)
 }
 
 func pickRandom<T>(from array: Array<T>) -> T {
-    return array[Int(arc4random_uniform(UInt32(array.count)))]
+    return array[Int.random(in: 0..<array.count)]
 }
 
-@inline(__always) func withProbability<Result>(probability: Probability, f: () -> Result) -> Result? {
-    if roll(probability) {
+func withProbability<Result>(probability: Probability, f: () -> Result) -> Result? {
+    if roll(probability: probability) {
         return f()
     }
     
     return nil
 }
 
-@inline(__always) func chooseWithProbability<Result>(probability: Probability, f: () -> Result, g: () -> Result) -> Result {
-    if roll(probability) {
+func chooseWithProbability<Result>(probability: Probability, f: () -> Result, g: () -> Result) -> Result {
+    if roll(probability: probability) {
         return f()
     } else {
         return g()
     }
 }
 
-@inline(__always) func pickFromRange<T>(range:Range<T>, withProbability probability: Probability) -> [T] {
+func pickFromRange<T: Strideable>(range:Range<T>, withProbability probability: Probability) -> [T] where T.Stride: SignedInteger
+{
     var selected = [T]()
     for i in range {
-        withProbability(probability) {
+        withProbability(probability: probability) {
             selected.append(i)
         }
     }
