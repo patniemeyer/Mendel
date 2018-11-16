@@ -13,15 +13,15 @@ public class TestViewController: UIViewController
 {
     override public func viewDidLoad() {
         super.viewDidLoad()
-        doNumbers()
+        testSumNumbers(target: 42, length: 10)
     }
     
-    func doNumbers()
+    func testSumNumbers(target: Int, length: Int)
     {
         let engine: SimpleEngine<Numbers> = SimpleEngine<Numbers>(
-            factory: { return Numbers.arbitraryOfLength(length: 10) },
+            factory: { return Numbers.arbitraryOfLength(length: length) },
             evaluation: { individual, population in
-                return Double(abs(individual.genes.reduce(0, +) - 42))
+                return Double(abs(individual.genes.reduce(0, +) - target))
             },
             fitnessKind: FitnessKind.Inverted,
             
@@ -50,12 +50,13 @@ public class TestViewController: UIViewController
             //print("iteration: \(data.iterationNum), best score: \(data.bestCandidateFitness), best: \(data.bestCandidate)")
         }
         
-        let n = 100
+        let n = 10
         let stats = Stats([Double]())
         for i in 0..<n {
-            print("run: \(i)")
             let iter = engine.evolve()
-            stats.addValue(val: Double(iter.iterationNum))
+            let its = iter.iterationNum
+            print("run: \(i), iterations = \(its)")
+            stats.addValue(val: Double(its))
         }
         print("median iterations after \(n) runs: \(stats.median)")
     }
@@ -77,24 +78,20 @@ struct Numbers: IndividualType, Crossoverable, Mutatable, CustomStringConvertibl
         return self.init( genes: (0..<length).map { _ in Int.random(in: 0...100) } )
     }
     
-    static func cross(parent1: Numbers, parent2: Numbers) -> [Numbers] {
+    static func cross(parent1 parentA: Numbers, parent2 parentB: Numbers) -> [Numbers] {
         //print("cross: \(parent1.genes), \(parent2.genes)")
-        
-        let wordA = parent1.genes
-        let wordB = parent2.genes
-        let c = wordA.count
-        var p1 = Int.random(in: 0..<c)
-        var p2 = Int.random(in: 0..<c)
-        if (p1 > p2) {
-            swap(&p1, &p2)
-        }
-        
-        let subRange = p1..<p2
-        var childB = wordB
-        childB.replaceSubrange(subRange, with: wordA[subRange])
-        var childA = wordA
-        childA.replaceSubrange(subRange, with: wordB[subRange])
-        
+
+        var childA = parentA.genes
+        var childB = parentB.genes
+        let count = parentA.genes.count
+        var i1 = Int.random(in: 0..<count)
+        var i2 = Int.random(in: 0..<count)
+        if (i1 > i2) { swap(&i1, &i2) }
+        let range = i1..<i2
+        childA.replaceSubrange(range, with: parentB.genes[range])
+        childB.replaceSubrange(range, with: parentA.genes[range])
+
+        //print("cross: \(parentA.genes, parentB.genes) = \(childA, childB)")
         return [self.init(genes: childA), self.init(genes: childB)]
     }
     
