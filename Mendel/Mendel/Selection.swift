@@ -47,6 +47,8 @@ public struct Selections {
         return selection
     }
     
+    // Probability proportional to normalized fitness (pi = fi / sum(f[0..n]))
+    // (the slice of the wheel for an individual is its fraction of the total fitness)
     public static func RouletteWheel<I : IndividualType>(pop: [Score<I>], fitnessKind: FitnessKind, count: Int) -> [I] {
         let fitnesses = pop.map { $0.fitness }
         
@@ -71,15 +73,10 @@ public struct Selections {
         }
         
         let sum = adjustedFitnesses.reduce(0, +)
-
         let startOffset = Double.random(in: 0...1)
-        
         var cumulativeExpectation: Double = 0
-        
         var idx = 0
-        
         var selection = [I]()
-        
         for score in pop {
             let adjusted = fitnessKind.adjustedFitness(fitness: score.fitness)
             cumulativeExpectation += adjusted / sum * Double(count)
@@ -93,6 +90,7 @@ public struct Selections {
         return selection
     }
     
+    // Scale fitness by the standard deviation to adjust selection pressure to fit the population
     public static func SigmaScaling<I : IndividualType>(pop: [Score<I>], fitnessKind: FitnessKind, count: Int) -> [I] {
         let fitnesses = pop.map { $0.fitness }
         

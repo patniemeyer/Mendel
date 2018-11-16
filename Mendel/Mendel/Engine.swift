@@ -61,7 +61,7 @@ public protocol Engine {
     
     //Starts the evolution process. This is a blocking call, it won't return until
     //`termination` returns true – make sure you aren't blocking UI.
-    func evolve() -> Individual
+    func evolve() -> IterationData<Individual>
 }
 
 //Represents the relationship between two fitness values
@@ -268,7 +268,7 @@ public class SimpleEngine<Individual : IndividualType> : Engine
     //while the evolution is running.
     //TODO: Clean up the implementation (avoid repetition, more functional style...)
     @discardableResult
-    public func evolve() -> Individual {
+    public func evolve() -> IterationData<Individual> {
         let pop = primordialSoup(size: self.config.size, factory: self.factory)
         
         let stride = pop.count / threads
@@ -291,7 +291,7 @@ public class SimpleEngine<Individual : IndividualType> : Engine
             self.iteration?(data)
         }
         
-        return data.bestCandidate
+        return data
     }
     
     //Evolution iteration logic
