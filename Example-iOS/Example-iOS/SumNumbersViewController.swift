@@ -3,7 +3,6 @@
 //  Example-iOS
 //
 //  Created by Patrick Niemeyer on 11/15/18.
-//  Copyright © 2018 Saniul Ahmed. All rights reserved.
 //
 
 import UIKit
