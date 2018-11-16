@@ -25,6 +25,7 @@ class ImageMatchingViewController: UIViewController {
         super.viewDidLoad()
         
         self.referenceImageView.image = image
+        tests()
     }
     
     @IBAction func start(sender: UIButton) {
@@ -48,6 +49,8 @@ class ImageMatchingViewController: UIViewController {
         }
     }
     
-    
+    func tests() {
+        
+    }
 }
 

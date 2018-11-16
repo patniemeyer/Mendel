@@ -27,7 +27,7 @@ public protocol Engine {
     //MARK: Core function types
     
     //Used to instantiate a new arbitrary Individual
-    typealias Factory = () -> Individual
+    typealias Factory = (() -> Individual)
     
     //Used to ge a fitness score for an Individual in a given Population
     typealias Evaluation = (Individual, Population) -> Fitness
@@ -207,24 +207,23 @@ public func evaluatePopulation<I : IndividualType>(population: [I], withStride s
 //Sorts the evaluated population based on the provided fitness kind
 public func sortEvaluatedPopulation<I : IndividualType>(population: [Score<I>], fitnessKind:FitnessKind) -> [Score<I>] {
     let sorted = population.sorted { return fitnessKind.comparisonOp($0.fitness, $1.fitness) }
-    
     //let fitnesses = population.map { $0.fitness }
-    
     return sorted
 }
 
 //MARK: Generational Engine
 
 //A Simple generational genetic engine implementation
-public class SimpleEngine<I : IndividualType> : Engine {
+public class SimpleEngine<Individual : IndividualType> : Engine
+{
+    let threads = 8
     
     //These type definitions have to be repeated here, even though we already
     //described them in Engine :( Not sure why...
     //TODO: find out why
     
     //MARK: Engine
-    public typealias Individual = I
-    
+
     public typealias Factory = () -> Individual
     
     public typealias Population = [Individual]
@@ -268,10 +267,12 @@ public class SimpleEngine<I : IndividualType> : Engine {
     //The core work function. This runs on the calling thread, blocking it
     //while the evolution is running.
     //TODO: Clean up the implementation (avoid repetition, more functional style...)
+    @discardableResult
     public func evolve() -> Individual {
         let pop = primordialSoup(size: self.config.size, factory: self.factory)
         
-        var evaluatedPop = evaluatePopulation(population: pop, withStride:25, evaluation: self.evaluation)
+        let stride = pop.count / threads
+        var evaluatedPop = evaluatePopulation(population: pop, withStride:stride, evaluation: self.evaluation)
         var sortedEvaluatedPop = sortEvaluatedPopulation(population: evaluatedPop, fitnessKind: self.fitnessKind)
         
         var iterationIdx = 0
@@ -316,7 +317,8 @@ public class SimpleEngine<I : IndividualType> : Engine {
         
         let newPop = elites + mutatedPop
         
-        let newEvaluatedPop = evaluatePopulation(population: newPop, withStride:25, evaluation: self.evaluation)
+        let stride = newPop.count / threads
+        let newEvaluatedPop = evaluatePopulation(population: newPop, withStride:stride, evaluation: self.evaluation)
         
         return newEvaluatedPop
     }

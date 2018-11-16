@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43985D6A219E26D8009133E2 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43985D69219E26D8009133E2 /* TestViewController.swift */; };
 		7530F6811A86035D00E2A6DF /* Mendel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7530F67E1A86034700E2A6DF /* Mendel.framework */; };
 		7530F6821A86035D00E2A6DF /* Mendel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7530F67E1A86034700E2A6DF /* Mendel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		75E23D531A6E50500098F2C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75E23D521A6E50500098F2C8 /* Images.xcassets */; };
@@ -67,6 +68,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		43985D69219E26D8009133E2 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		7530F6781A86034700E2A6DF /* Mendel.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Mendel.xcodeproj; path = ../Mendel/Mendel.xcodeproj; sourceTree = "<group>"; };
 		75E23D461A6E50500098F2C8 /* Example-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75E23D4A1A6E50500098F2C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				75E23D7A1A6E51900098F2C8 /* AppDelegate.swift */,
 				75E23D7D1A6E51900098F2C8 /* ImageMatchingViewController.swift */,
 				75E23D871A6E5B800098F2C8 /* WordMatchingViewController.swift */,
+				43985D69219E26D8009133E2 /* TestViewController.swift */,
 				75E23D7B1A6E51900098F2C8 /* ImageMatching.swift */,
 				75E23D7E1A6E51900098F2C8 /* WordMatching.swift */,
 				75E23D521A6E50500098F2C8 /* Images.xcassets */,
@@ -304,6 +307,7 @@
 				75E23D821A6E51900098F2C8 /* ImageMatchingViewController.swift in Sources */,
 				75E23D881A6E5B800098F2C8 /* WordMatchingViewController.swift in Sources */,
 				75E23D801A6E51900098F2C8 /* ImageMatching.swift in Sources */,
+				43985D6A219E26D8009133E2 /* TestViewController.swift in Sources */,
 				75E23D7F1A6E51900098F2C8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -445,7 +449,7 @@
 					"/Users/saniul/Projects/mendel/Mendel/build/Release-iphoneos",
 				);
 				INFOPLIST_FILE = "Example-iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Ounchecked";
@@ -466,7 +470,7 @@
 					"/Users/saniul/Projects/mendel/Mendel/build/Release-iphoneos",
 				);
 				INFOPLIST_FILE = "Example-iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

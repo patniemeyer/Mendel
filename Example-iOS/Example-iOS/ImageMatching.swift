@@ -24,9 +24,8 @@ public class ImageMatchingLab {
     }
     
     func doScience() {
-        var engine = SimpleEngine<Painting>(
-            //125 triangles
-            factory: { ()->Painting in return Painting.arbitraryOfLength(length: 125) },
+        let engine = SimpleEngine<Painting>(
+            factory: { ()->Painting in return Painting.arbitraryOfLength(length: 50) },
             evaluation: distanceFromTargetImageAtURL(imageURL: self.referenceImageURL),
             fitnessKind: FitnessKind.Inverted,
             selection: Selections.RouletteWheel,
@@ -37,19 +36,15 @@ public class ImageMatchingLab {
                 newPop = Operators.Mutation(probability: 1.0, pop: newPop)
                 return newPop
             }
-            //Operators.Parallel(batchSize: 10)(op: Operators.Crossover(0.5) >>> Operators.Mutation(1))
         )
         self.engine = engine
         
         var config = Configuration()
-        config.size = 100
+        config.size = 200
         config.eliteCount = 1
         
         engine.config = config
-        
-        //Never terminate
-        engine.termination = { _ in return false }
-        
+        engine.termination = { _ in return false } //Never terminate
         engine.iteration = { data in
             let best = data.bestCandidate
             
@@ -90,11 +85,8 @@ struct Gene {
     let triangle: Triangle
     
     func drawInContext(context: CGContext, size: CGSize) {
-        //        CGContextSaveGState(context)
-        //CGContextSetRGBFillColor(context, CGFloat(color.r)/255, CGFloat(color.g)/255, CGFloat(color.b)/255, CGFloat(color.a)/255)
         context.setFillColor(red: CGFloat(color.r)/255, green: CGFloat(color.g)/255, blue: CGFloat(color.b)/255, alpha: CGFloat(color.a)/255)
         triangle.drawInContext(context: context, size:size)
-        //        CGContextRestoreGState(context)
     }
 }
 
@@ -263,10 +255,10 @@ private func distanceFromTargetImageAtURL(imageURL: URL) -> (Painting, [Painting
         fatalError("image source")
     }
     
-    var count = CGImageSourceGetCount(imageSource)
+    //var count = CGImageSourceGetCount(imageSource)
     
     let targetImage = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, options as CFDictionary)!
-    let img = UIImage(cgImage: targetImage)
+    //let img = UIImage(cgImage: targetImage)
     
     let colorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB()
     let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.noneSkipLast.rawValue)
