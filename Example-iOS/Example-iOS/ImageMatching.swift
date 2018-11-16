@@ -27,8 +27,11 @@ public class ImageMatchingLab {
         let engine = SimpleEngine<Painting>(
             factory: { ()->Painting in return Painting.arbitraryOfLength(length: 50) },
             evaluation: distanceFromTargetImageAtURL(imageURL: self.referenceImageURL),
-            fitnessKind: FitnessKind.Inverted,
-            selection: Selections.RouletteWheel,
+            fitnessKind: FitnessKind.inverted,
+            //selection: Selection.rouletteWheel,
+            //selection: Selection.sigmaScaling,
+            //selection: Selection.stochasticUniversalSampling,
+            selection: Selection.tournament2,
             //Mutation is at 100%, since we control the by-gene probabilities
             //at the individual level
             op: { (pop:[Painting])->[Painting] in

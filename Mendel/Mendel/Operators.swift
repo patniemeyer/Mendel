@@ -10,15 +10,8 @@ import Foundation
 
 public struct Operators
 {
-    public static func Replace<I : IndividualType>(factory:()->I, pop:[I])->[I] {
-        return (0..<pop.count).map { _ in return factory() }
-    }
-    
-    public static func Identity<I : IndividualType>(pop:[I])->[I] {
-        return pop
-    }
-    
-    public static func Crossover<I : Crossoverable>(probability:Probability, pop:[I])->[I] {
+    public static func Crossover<I : Crossoverable>(probability:Probability, pop:[I])->[I]
+    {
         var result = [I]()
         
         var generator = pop.shuffled().makeIterator()

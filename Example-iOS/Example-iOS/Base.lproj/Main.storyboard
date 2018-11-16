@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="oOU-GV-fR7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -195,7 +195,7 @@
         <!--Test ViewController-->
         <scene sceneID="V1H-EV-VYe">
             <objects>
-                <viewController id="oOU-GV-fR7" userLabel="Test ViewController" customClass="TestViewController" customModule="Example_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="oOU-GV-fR7" userLabel="Test ViewController" customClass="SumNumbersViewController" customModule="Example_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="U5b-Ll-xJn"/>
                         <viewControllerLayoutGuide type="bottom" id="iCM-GJ-f2c"/>

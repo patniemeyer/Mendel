@@ -67,23 +67,23 @@ public protocol Engine {
 //Represents the relationship between two fitness values
 //Defines whether a greater Fitness value should be considered better or worse
 public enum FitnessKind {
-    case Natural
-    case Inverted
+    case natural
+    case inverted
     
     var comparisonOp:(_ lhs: Fitness, _ rhs: Fitness) -> Bool {
         switch self {
-        case .Natural :
+        case .natural :
             return (>)
-        case .Inverted:
+        case .inverted:
             return (<)
         }
     }
     
     func adjustedFitness(fitness: Fitness) -> Fitness {
         switch self {
-        case .Natural:
+        case .natural:
             return fitness
-        case .Inverted:
+        case .inverted:
             if fitness == 0 {
                 return Double.infinity
             } else {
@@ -225,25 +225,20 @@ public class SimpleEngine<Individual : IndividualType> : Engine
     //MARK: Engine
 
     public typealias Factory = () -> Individual
-    
     public typealias Population = [Individual]
     public typealias EvaluatedPopulation = [Score<Individual>]
-    
     public typealias Evaluation = (Individual, Population) -> Fitness
     public typealias Operator = (Population) -> Population
     public typealias Selection = (EvaluatedPopulation, FitnessKind, Int) -> Population
-    
     public typealias Termination = (IterationData<Individual>) -> Bool
     
     public let factory: Factory
     public let fitnessKind: FitnessKind
     public let selection: Selection
     public let op: Operator
-    
     public let evaluation: Evaluation
     
     public var termination: Termination?
-    
     public var iteration: ((IterationData<Individual>) -> Void)?
     
     ////////////////////////////////////////////////////////////////////////////
@@ -294,9 +289,8 @@ public class SimpleEngine<Individual : IndividualType> : Engine
         return data
     }
     
-    //Evolution iteration logic
+    // Evolution iteration logic
     func step(pop: EvaluatedPopulation) -> EvaluatedPopulation {
-        //let elites = map(pop[0..<self.config.eliteCount]) { $0.individual }
         let elites = (pop[0..<self.config.eliteCount]).map { $0.individual }
         
         let normalCount = pop.count - elites.count
@@ -305,17 +299,17 @@ public class SimpleEngine<Individual : IndividualType> : Engine
 
         //TODO: parametrize?
         while selectedPop.count < normalCount {
-            selectedPop += Selections.Random(pop: pop, fitnessKind: self.fitnessKind, count: normalCount - selectedPop.count)
+            selectedPop += Mendel.Selection.random(pop: pop, fitnessKind: self.fitnessKind, count: normalCount - selectedPop.count)
         }
         
-        var mutatedPop = self.op(Array(selectedPop[0..<selectedPop.count]))
+        var transformedPop = self.op(Array(selectedPop[0..<selectedPop.count]))
         
         //TODO: parametrize?
-        while mutatedPop.count < normalCount {
-            mutatedPop.append(self.factory())
+        while transformedPop.count < normalCount {
+            transformedPop.append(self.factory())
         }
         
-        let newPop = elites + mutatedPop
+        let newPop = elites + transformedPop
         
         let stride = newPop.count / threads
         let newEvaluatedPop = evaluatePopulation(population: newPop, withStride:stride, evaluation: self.evaluation)
@@ -324,11 +318,9 @@ public class SimpleEngine<Individual : IndividualType> : Engine
     }
 }
 
-//SimpleEngine parametrization
+// SimpleEngine parametrization
 public struct Configuration {
-    public init() {
-    }
-    
+    public init() { }
     public var size = 250
     public var eliteCount = 1
 }

@@ -41,7 +41,7 @@ func insertionPoint<C : Collection>(domain: C, searchItem: C.Element) -> C.Index
     
     while (true) {
         let currentIndex = (lowerIndex + upperIndex)/2
-        let item = domain[currentIndex]
+        //let item = domain[currentIndex]
         
         if (domain[currentIndex] == searchItem) {
             return currentIndex

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43985D6C219F10F2009133E2 /* Array+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43985D6B219F10F2009133E2 /* Array+extensions.swift */; };
 		7572EF6E1A6E4668008667AF /* Mendel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7572EF6D1A6E4668008667AF /* Mendel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7572EF741A6E4668008667AF /* Mendel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7572EF681A6E4668008667AF /* Mendel.framework */; };
 		7572EF7B1A6E4668008667AF /* MendelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7572EF7A1A6E4668008667AF /* MendelTests.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		43985D6B219F10F2009133E2 /* Array+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+extensions.swift"; sourceTree = "<group>"; };
 		7572EF681A6E4668008667AF /* Mendel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mendel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7572EF6C1A6E4668008667AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7572EF6D1A6E4668008667AF /* Mendel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mendel.h; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				7572EF921A6E46C0008667AF /* Stats.swift */,
 				7572EF931A6E46C0008667AF /* Dice.swift */,
 				7572EF911A6E46C0008667AF /* Utilities.swift */,
+				43985D6B219F10F2009133E2 /* Array+extensions.swift */,
 				7572EF6D1A6E4668008667AF /* Mendel.h */,
 				7572EF6B1A6E4668008667AF /* Supporting Files */,
 			);
@@ -233,6 +236,7 @@
 				7572EF9C1A6E46D0008667AF /* Selection.swift in Sources */,
 				7572EF9E1A6E46D0008667AF /* Operators.swift in Sources */,
 				7572EF9B1A6E46D0008667AF /* Engine.swift in Sources */,
+				43985D6C219F10F2009133E2 /* Array+extensions.swift in Sources */,
 				7572EF9F1A6E46D0008667AF /* Utilities.swift in Sources */,
 				7572EFA11A6E46D0008667AF /* Dice.swift in Sources */,
 				7572EF9D1A6E46D0008667AF /* Termination.swift in Sources */,

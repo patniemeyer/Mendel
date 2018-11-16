@@ -8,18 +8,19 @@
 
 import Foundation
 
-public struct Selections {
-    public static func Truncation<I : IndividualType>(truncationPoint: Double, pop: [Score<I>], fitnessKind: FitnessKind, count: Int) -> [I] {
+public struct Selection
+{
+    public static func truncation<I : IndividualType>(
+        truncationPoint: Double, pop: [Score<I>], fitnessKind: FitnessKind, count: Int) -> [I] {
         //let truncationCount = Int(floor(truncationPoint * Double(pop.count)))
         
         let slice = pop[0..<count]
-        
         let result = Array(slice)
-        
         return result.map { $0.individual }
     }
     
-    public static func Random<I : IndividualType>(pop: [Score<I>], fitnessKind: FitnessKind, count: Int) -> [I] {
+    public static func random<I : IndividualType>(
+        pop: [Score<I>], fitnessKind: FitnessKind, count: Int) -> [I] {
         var selected = [I]()
         
         for _ in 0..<count {
@@ -29,7 +30,14 @@ public struct Selections {
         return selected
     }
     
-    public static func Tournament<I : IndividualType>(size: Int, pop: [Score<I>], fitnessKind: FitnessKind, count: Int) -> [I] {
+    public static func tournament2<I : IndividualType>(
+        pop: [Score<I>], fitnessKind: FitnessKind, count: Int) -> [I] {
+        return tournament(size: 2, pop: pop, fitnessKind: fitnessKind, count: count)
+    }
+    
+    public static func tournament<I : IndividualType>(
+        size: Int, pop: [Score<I>], fitnessKind: FitnessKind, count: Int) -> [I]
+    {
         var selection = [I]()
         
         let sortLambda = { (a: Score<I>, b:Score<I>) -> Bool in
@@ -49,7 +57,9 @@ public struct Selections {
     
     // Probability proportional to normalized fitness (pi = fi / sum(f[0..n]))
     // (the slice of the wheel for an individual is its fraction of the total fitness)
-    public static func RouletteWheel<I : IndividualType>(pop: [Score<I>], fitnessKind: FitnessKind, count: Int) -> [I] {
+    public static func rouletteWheel<I : IndividualType>(
+        pop: [Score<I>], fitnessKind: FitnessKind, count: Int) -> [I]
+    {
         let fitnesses = pop.map { $0.fitness }
         
         let cumulative = scanl1(input: fitnesses) { acc, val -> Double in
@@ -67,7 +77,9 @@ public struct Selections {
         return selection
     }
     
-    public static func StochasticUniversalSampling<I : IndividualType>(pop: [Score<I>], fitnessKind: FitnessKind, count: Int) -> [I] {
+    public static func stochasticUniversalSampling<I : IndividualType>(
+        pop: [Score<I>], fitnessKind: FitnessKind, count: Int) -> [I]
+    {
         let adjustedFitnesses = pop.map { score -> Fitness in
             return fitnessKind.adjustedFitness(fitness: score.fitness)
         }
@@ -91,7 +103,8 @@ public struct Selections {
     }
     
     // Scale fitness by the standard deviation to adjust selection pressure to fit the population
-    public static func SigmaScaling<I : IndividualType>(pop: [Score<I>], fitnessKind: FitnessKind, count: Int) -> [I] {
+    public static func sigmaScaling<I : IndividualType>(pop: [Score<I>], fitnessKind: FitnessKind, count: Int) -> [I]
+    {
         let fitnesses = pop.map { $0.fitness }
         
         let stats: Stats = Stats(fitnesses)
@@ -104,7 +117,7 @@ public struct Selections {
             return Score<I>(fitness: scaled, individual: score.individual)
         }
         
-        return StochasticUniversalSampling(pop: scaledPop, fitnessKind: fitnessKind, count: count)
+        return stochasticUniversalSampling(pop: scaledPop, fitnessKind: fitnessKind, count: count)
     }
     
     private static func sigmaScaled(fitness: Double, mean: Double, stdev: Double) -> Double {
@@ -116,13 +129,13 @@ public struct Selections {
         }
     }
     
-    public static func RankSelection<I : IndividualType>(pop: [Score<I>], fitnessKind: FitnessKind, count: Int) -> [I] {
+    public static func rankSelection<I : IndividualType>(pop: [Score<I>], fitnessKind: FitnessKind, count: Int) -> [I] {
         let mappedPop = (pop.enumerated()).map { (arg) -> Score<I> in
             let (idx, score) = arg
             return Score(fitness: self.rankMapped(rank: idx+1, populationSize: pop.count), individual: score.individual)
         }
         
-        return StochasticUniversalSampling(pop: mappedPop, fitnessKind: fitnessKind, count: count)
+        return stochasticUniversalSampling(pop: mappedPop, fitnessKind: fitnessKind, count: count)
     }
     
     private static func rankMapped(rank: Int, populationSize: Int) -> Double {
