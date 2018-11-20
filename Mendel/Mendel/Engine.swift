@@ -201,6 +201,7 @@ public func evaluatePopulation<I : IndividualType>(population: [I], withStride s
     
     _ = group.wait(timeout: DispatchTime.distantFuture)
 
+    print(scores.map{$0.fitness})
     return scores
 }
 

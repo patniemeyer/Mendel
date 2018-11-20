@@ -28,10 +28,10 @@ public class ImageMatchingLab {
             factory: { ()->Painting in return Painting.arbitraryOfLength(length: 50) },
             evaluation: distanceFromTargetImageAtURL(imageURL: self.referenceImageURL),
             fitnessKind: FitnessKind.inverted,
-            //selection: Selection.rouletteWheel,
+            selection: Selection.rouletteWheel,
             //selection: Selection.sigmaScaling,
             //selection: Selection.stochasticUniversalSampling,
-            selection: Selection.tournament2,
+            //selection: Selection.tournament2,
             //Mutation is at 100%, since we control the by-gene probabilities
             //at the individual level
             op: { (pop:[Painting])->[Painting] in
@@ -50,7 +50,6 @@ public class ImageMatchingLab {
         engine.termination = { _ in return false } //Never terminate
         engine.iteration = { data in
             let best = data.bestCandidate
-            
             if let size = self.outputImageSize {
                 self.output?(best.imageOfSize(size: size), data.iterationNum)
             }
@@ -277,7 +276,7 @@ private func distanceFromTargetImageAtURL(imageURL: URL) -> (Painting, [Painting
     targetcontext.draw(targetImage, in: CGRect(origin: CGPoint.zero, size: targetImage.size))
 
     let distance = distanceFromTargetImageData(targetData: buffer, withSize: targetImage.size)
-    
+
     return distance
 }
 
