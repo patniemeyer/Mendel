@@ -1,0 +1,6 @@
+framework module Mendel {
+  umbrella header "Mendel-umbrella.h"
+
+  export *
+  module * { export * }
+}

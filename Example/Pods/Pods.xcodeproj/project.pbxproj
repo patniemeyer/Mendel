@@ -1,0 +1,1195 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0A8D61A32BBA392C0C942FA4F1671B87 /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E7E9BFEED8D6556B3027BB20B0230C /* Selection.swift */; };
+		109FD8067515B2DCD51AC92C78BA9BB0 /* TinyConstraints-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A0C778E7B13FEA748CD7E53A72BC22 /* TinyConstraints-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		141FE5E1FC6D7A5BC4A8D1D6A26078B6 /* Termination.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6053FED918D86D085EA5D4A94A78BE6 /* Termination.swift */; };
+		199329794CB3FB09FC7CCB4F4D0FDA5C /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727F07F485DA484EDDE2AC2F18E76778 /* Dice.swift */; };
+		2C20888E77E85DBB7A156D219CEEE08A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934D41F50C224EBF0A38B622ECD24CF6 /* Utilities.swift */; };
+		34E408B57E55F9F72DBFFE9CE00306B2 /* TinyConstraints-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 52924B4F9BF56D2B1964CF892EB37758 /* TinyConstraints-dummy.m */; };
+		3B4B5F9A093B4830AB4C533C87153EAB /* Pods-Mendel_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = ECF6D38366AA74DA2856756F903AE0CB /* Pods-Mendel_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3BFF155A9E42246D167186BFFD2A9801 /* Then-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B859035389A0793D751614E733B898B8 /* Then-dummy.m */; };
+		4C6D826BB179956D4CE02FD7F77AAAEE /* Pods-Mendel_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E8418C22C3F0EF9271836731C0C3BF0 /* Pods-Mendel_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		51337252FFF542FC472F4FC46B1B86AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		534264A35535F7E2BDA1D8B57C88A758 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1EAF80E4C03A31394EFC858B061BF4 /* Constraints.swift */; };
+		5AA9F7E5FFACF8CDA40884D0C3EFDAEB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		5C5142AA46DF3651E1087E98B2E4128B /* TinyEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202A87435ACE5639E241085AD326D0B0 /* TinyEdgeInsets.swift */; };
+		65116AE453CE1BE1D878325AD4A16C32 /* TinyConstraints+superview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C65542581C3A7B829EA9E6E0AE716C /* TinyConstraints+superview.swift */; };
+		68532E916CF31CB29127A0DE80CA6451 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32D6BDB3F6DE3FD341628DF628485B /* Operators.swift */; };
+		6A485C9C0F037BD08796C6D482B5DADD /* Array+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E157C35E44E8B7436353A879A98F94 /* Array+extensions.swift */; };
+		6DE27BA4E542DB1953D5303C2921F133 /* Constrainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3E7C744A0161715A7589F6DFA689FE /* Constrainable.swift */; };
+		70E1551200DAC8C13A2922BC2C3D0719 /* Then-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EC9C6F80269DBEB50E6834E6A9B4324 /* Then-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78425477D0878F81E0688CF67567C854 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		7B5238D2A40FF017E86A45C794543767 /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8889488CF7A5A25571F95CF2E7A0835A /* Then.swift */; };
+		7E3400D192652E5E4C6D5F413DC65798 /* TinyConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17997EB1CCFD7626D986D9B2F51A912 /* TinyConstraints.swift */; };
+		8692E2218FBD2C1D7579FD928581739A /* Pods-Mendel_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 143843DCDDDE483BE04E99978EC605DB /* Pods-Mendel_Tests-dummy.m */; };
+		87C0BDD9528F9FF703CF845DCFB4C334 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		A3D210AF4DC2320188CEE7113DD1D5A0 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD4B6C34402ED4685A203106996BD0A /* Stack.swift */; };
+		A7CB75B0957F3C0F9F1807348D69CFCD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		B040B51AE47060E84A784082DBC2F8A1 /* Abstraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7B19E86320E6DCEE134D046EF1B0C9 /* Abstraction.swift */; };
+		BA3F5AC9CB0C49A4271450B8BE986F47 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820FAB988277C59F6736C97155785BDD /* Engine.swift */; };
+		CED4B90AD644D84849571AA8DF87B512 /* Pods-Mendel_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F22C90B8AC4C2F232D28FD964CC362 /* Pods-Mendel_Example-dummy.m */; };
+		D1B9862B8528B2D547D665438E26E088 /* Mendel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AF776F32E03DB7B6407CA07C89767799 /* Mendel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA9E6681FC6FF3216A97827119CF226F /* Mendel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 097574287E75D3B3BEF65564B8470698 /* Mendel-dummy.m */; };
+		EDD75CB406A0D62DD03F6CC0C7F38EC9 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C644963A58CDC09DFAAC04EC145862D /* Stats.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3B87F1A67EEB871326746CF315A90336 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F3872C71EAC01A62743F609A69EB8332;
+			remoteInfo = Then;
+		};
+		3E7F5BC29ABBE74204EC8A8B831D310E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 12E9A8A4F52AC5175F875FA39B6C0B26;
+			remoteInfo = TinyConstraints;
+		};
+		BC9CF28CD36BC9C83DC7AEBAD9EC51CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 783FBEAAAFB5AA102445DD493F13BBBF;
+			remoteInfo = "Pods-Mendel_Example";
+		};
+		DA701E8628656EBAE015E86283A12846 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0CD60B3BE007ED040DD1BF94ED6D5345;
+			remoteInfo = Mendel;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01684089E1C10B6AADCD914A5946251D /* Mendel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Mendel.modulemap; sourceTree = "<group>"; };
+		097574287E75D3B3BEF65564B8470698 /* Mendel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Mendel-dummy.m"; sourceTree = "<group>"; };
+		0E8418C22C3F0EF9271836731C0C3BF0 /* Pods-Mendel_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Mendel_Tests-umbrella.h"; sourceTree = "<group>"; };
+		11BFAA6BEE6CE3420EC4926F385146EF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		136C0F7C2E1D9916E868663C41D4386B /* Mendel-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Mendel-prefix.pch"; sourceTree = "<group>"; };
+		143843DCDDDE483BE04E99978EC605DB /* Pods-Mendel_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Mendel_Tests-dummy.m"; sourceTree = "<group>"; };
+		161C06AC7053126A7C3CD3CB4D0A1D98 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1733E2BF7B93A4E0702245304AE4923F /* Pods-Mendel_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Mendel_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		1C3E7C744A0161715A7589F6DFA689FE /* Constrainable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constrainable.swift; path = TinyConstraints/Classes/Constrainable.swift; sourceTree = "<group>"; };
+		1C5D98FADE30A406D7190B7BA5EDF3C6 /* Pods_Mendel_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Mendel_Tests.framework; path = "Pods-Mendel_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		202A87435ACE5639E241085AD326D0B0 /* TinyEdgeInsets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TinyEdgeInsets.swift; path = TinyConstraints/Classes/TinyEdgeInsets.swift; sourceTree = "<group>"; };
+		2A4CC1936785F86695FACEE3D0D47FD3 /* Mendel.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = Mendel.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		2C644963A58CDC09DFAAC04EC145862D /* Stats.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stats.swift; path = Mendel/Classes/Stats.swift; sourceTree = "<group>"; };
+		30A0C778E7B13FEA748CD7E53A72BC22 /* TinyConstraints-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TinyConstraints-umbrella.h"; sourceTree = "<group>"; };
+		33EFEFDE37DF5D629924B36F4026E43B /* TinyConstraints.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TinyConstraints.framework; path = TinyConstraints.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		44E7E9BFEED8D6556B3027BB20B0230C /* Selection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Selection.swift; path = Mendel/Classes/Selection.swift; sourceTree = "<group>"; };
+		46DA411679DD9B0147868D47B0670639 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		47B7A9F190198F920F6EE0D3BADEB4BA /* Then.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Then.modulemap; sourceTree = "<group>"; };
+		4AEB182C9BB075BC28F7EE05CDFFE645 /* Pods-Mendel_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Mendel_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		4CD4B6C34402ED4685A203106996BD0A /* Stack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stack.swift; path = TinyConstraints/Classes/Stack.swift; sourceTree = "<group>"; };
+		4EC9C6F80269DBEB50E6834E6A9B4324 /* Then-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Then-umbrella.h"; sourceTree = "<group>"; };
+		4FD0C10AAE80895D384FCD1111F60A2A /* Pods-Mendel_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Mendel_Example-frameworks.sh"; sourceTree = "<group>"; };
+		516F4736AA9ADBF2954866129972B51D /* Pods-Mendel_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Mendel_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		52924B4F9BF56D2B1964CF892EB37758 /* TinyConstraints-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TinyConstraints-dummy.m"; sourceTree = "<group>"; };
+		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		5ADB11E25B986AAC7E773BE476DE25BD /* Pods-Mendel_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Mendel_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		5CC8C10CFA3E6B9AA42413F82B8665D4 /* Then.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Then.xcconfig; sourceTree = "<group>"; };
+		5EE235059F120860442BDDF5393ED20E /* Pods-Mendel_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Mendel_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		6C7B19E86320E6DCEE134D046EF1B0C9 /* Abstraction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Abstraction.swift; path = TinyConstraints/Classes/Abstraction.swift; sourceTree = "<group>"; };
+		727F07F485DA484EDDE2AC2F18E76778 /* Dice.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Dice.swift; path = Mendel/Classes/Dice.swift; sourceTree = "<group>"; };
+		79F22C90B8AC4C2F232D28FD964CC362 /* Pods-Mendel_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Mendel_Example-dummy.m"; sourceTree = "<group>"; };
+		7B976155EFD712C63B525EA862F7364F /* Then-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Then-prefix.pch"; sourceTree = "<group>"; };
+		7C8F2895EEC96FDA2899CF9252A1B97C /* TinyConstraints-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TinyConstraints-prefix.pch"; sourceTree = "<group>"; };
+		820FAB988277C59F6736C97155785BDD /* Engine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Engine.swift; path = Mendel/Classes/Engine.swift; sourceTree = "<group>"; };
+		8343577F8551A8A6CB7BE1D3331A8411 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83E157C35E44E8B7436353A879A98F94 /* Array+extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Array+extensions.swift"; path = "Mendel/Classes/Array+extensions.swift"; sourceTree = "<group>"; };
+		84C65542581C3A7B829EA9E6E0AE716C /* TinyConstraints+superview.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TinyConstraints+superview.swift"; path = "TinyConstraints/Classes/TinyConstraints+superview.swift"; sourceTree = "<group>"; };
+		86B706903C110662B8724365B7F25DAE /* Pods_Mendel_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Mendel_Example.framework; path = "Pods-Mendel_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8889488CF7A5A25571F95CF2E7A0835A /* Then.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Then.swift; path = Sources/Then/Then.swift; sourceTree = "<group>"; };
+		896E93E2DCABDE574A7DA96162AB4BE7 /* Pods-Mendel_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Mendel_Tests-resources.sh"; sourceTree = "<group>"; };
+		934D41F50C224EBF0A38B622ECD24CF6 /* Utilities.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = Mendel/Classes/Utilities.swift; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A320C8E3FC1193C1EE70AF2766A79907 /* Pods-Mendel_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Mendel_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		A33FA47862116D4C7D859CA121491AF5 /* Pods-Mendel_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Mendel_Example-resources.sh"; sourceTree = "<group>"; };
+		A9B130ACA4CA2E9B0FFFDABF2F037587 /* Mendel.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Mendel.xcconfig; sourceTree = "<group>"; };
+		A9B1C8E8DDE188382CA64CB27649D5AE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9DD006488D965D27666A792A3373416 /* Pods-Mendel_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Mendel_Tests.modulemap"; sourceTree = "<group>"; };
+		AF776F32E03DB7B6407CA07C89767799 /* Mendel-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Mendel-umbrella.h"; sourceTree = "<group>"; };
+		AFDB98E6E423518F2BD8AD902B50E106 /* Pods-Mendel_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Mendel_Example.modulemap"; sourceTree = "<group>"; };
+		B859035389A0793D751614E733B898B8 /* Then-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Then-dummy.m"; sourceTree = "<group>"; };
+		CAD1F9C779026B3636594C5F2757D5BC /* Pods-Mendel_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Mendel_Example.release.xcconfig"; sourceTree = "<group>"; };
+		CD1EAF80E4C03A31394EFC858B061BF4 /* Constraints.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constraints.swift; path = TinyConstraints/Classes/Constraints.swift; sourceTree = "<group>"; };
+		CE74EBFC9C29D96FCB969F01CFDAE284 /* Mendel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Mendel.framework; path = Mendel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D17997EB1CCFD7626D986D9B2F51A912 /* TinyConstraints.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TinyConstraints.swift; path = TinyConstraints/Classes/TinyConstraints.swift; sourceTree = "<group>"; };
+		D57145B468D74BF22BC111460153DE5E /* Pods-Mendel_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Mendel_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		D7B27691471EB749948CD19CBD2C2332 /* Then.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Then.framework; path = Then.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA32D6BDB3F6DE3FD341628DF628485B /* Operators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = Mendel/Classes/Operators.swift; sourceTree = "<group>"; };
+		DAD89217E5535B6951AEF6679D3D5EC5 /* TinyConstraints.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = TinyConstraints.modulemap; sourceTree = "<group>"; };
+		E22E202B91D12AFD2F896B7293C08B9B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ECF6D38366AA74DA2856756F903AE0CB /* Pods-Mendel_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Mendel_Example-umbrella.h"; sourceTree = "<group>"; };
+		F6053FED918D86D085EA5D4A94A78BE6 /* Termination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Termination.swift; path = Mendel/Classes/Termination.swift; sourceTree = "<group>"; };
+		FB4009A84A24E69BB6DD135D00EB5DC3 /* Pods-Mendel_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Mendel_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		FDC08D53427CFEB6813555988590AEC3 /* TinyConstraints.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TinyConstraints.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		137ED1662ACF41F9A1C6AA5E5C5F5993 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7CB75B0957F3C0F9F1807348D69CFCD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0C1836DFE918421838F95A80BCD24DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AA9F7E5FFACF8CDA40884D0C3EFDAEB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9509FBEEA884107AB630CFF461A6AFF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78425477D0878F81E0688CF67567C854 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD7378EEEBE9DA37A396EFD1ADDED892 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51337252FFF542FC472F4FC46B1B86AA /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA56A725632F31663EA6DC5F1D379D84 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87C0BDD9528F9FF703CF845DCFB4C334 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		07554EC84C04EFC879A1BC550B84227F /* TinyConstraints */ = {
+			isa = PBXGroup;
+			children = (
+				6C7B19E86320E6DCEE134D046EF1B0C9 /* Abstraction.swift */,
+				1C3E7C744A0161715A7589F6DFA689FE /* Constrainable.swift */,
+				CD1EAF80E4C03A31394EFC858B061BF4 /* Constraints.swift */,
+				4CD4B6C34402ED4685A203106996BD0A /* Stack.swift */,
+				D17997EB1CCFD7626D986D9B2F51A912 /* TinyConstraints.swift */,
+				84C65542581C3A7B829EA9E6E0AE716C /* TinyConstraints+superview.swift */,
+				202A87435ACE5639E241085AD326D0B0 /* TinyEdgeInsets.swift */,
+				DC041D1F9B344791E55316047F10DDCA /* Support Files */,
+			);
+			name = TinyConstraints;
+			path = TinyConstraints;
+			sourceTree = "<group>";
+		};
+		11A1742BBCBB52AEE1CC6C41AA4272F1 /* Pods-Mendel_Example */ = {
+			isa = PBXGroup;
+			children = (
+				E22E202B91D12AFD2F896B7293C08B9B /* Info.plist */,
+				AFDB98E6E423518F2BD8AD902B50E106 /* Pods-Mendel_Example.modulemap */,
+				516F4736AA9ADBF2954866129972B51D /* Pods-Mendel_Example-acknowledgements.markdown */,
+				D57145B468D74BF22BC111460153DE5E /* Pods-Mendel_Example-acknowledgements.plist */,
+				79F22C90B8AC4C2F232D28FD964CC362 /* Pods-Mendel_Example-dummy.m */,
+				4FD0C10AAE80895D384FCD1111F60A2A /* Pods-Mendel_Example-frameworks.sh */,
+				A33FA47862116D4C7D859CA121491AF5 /* Pods-Mendel_Example-resources.sh */,
+				ECF6D38366AA74DA2856756F903AE0CB /* Pods-Mendel_Example-umbrella.h */,
+				1733E2BF7B93A4E0702245304AE4923F /* Pods-Mendel_Example.debug.xcconfig */,
+				CAD1F9C779026B3636594C5F2757D5BC /* Pods-Mendel_Example.release.xcconfig */,
+			);
+			name = "Pods-Mendel_Example";
+			path = "Target Support Files/Pods-Mendel_Example";
+			sourceTree = "<group>";
+		};
+		19825ACFC4D434C71FA99D59B43EAF4C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9DDCB22B7496CA827805EC50CF3B9FF7 /* Then */,
+				07554EC84C04EFC879A1BC550B84227F /* TinyConstraints */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		1D083DDB334E84F9BD8EEAEDFAF8203A /* Mendel */ = {
+			isa = PBXGroup;
+			children = (
+				83E157C35E44E8B7436353A879A98F94 /* Array+extensions.swift */,
+				727F07F485DA484EDDE2AC2F18E76778 /* Dice.swift */,
+				820FAB988277C59F6736C97155785BDD /* Engine.swift */,
+				DA32D6BDB3F6DE3FD341628DF628485B /* Operators.swift */,
+				44E7E9BFEED8D6556B3027BB20B0230C /* Selection.swift */,
+				2C644963A58CDC09DFAAC04EC145862D /* Stats.swift */,
+				F6053FED918D86D085EA5D4A94A78BE6 /* Termination.swift */,
+				934D41F50C224EBF0A38B622ECD24CF6 /* Utilities.swift */,
+				EECF6941D99E1F240B3A6D934A746BBD /* Pod */,
+				D133D200C5EFE4C5A5CB620EEFD18CB7 /* Support Files */,
+			);
+			name = Mendel;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		24573B437ECF0E114ADE26C1346EAA36 /* Pods-Mendel_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				46DA411679DD9B0147868D47B0670639 /* Info.plist */,
+				A9DD006488D965D27666A792A3373416 /* Pods-Mendel_Tests.modulemap */,
+				5ADB11E25B986AAC7E773BE476DE25BD /* Pods-Mendel_Tests-acknowledgements.markdown */,
+				5EE235059F120860442BDDF5393ED20E /* Pods-Mendel_Tests-acknowledgements.plist */,
+				143843DCDDDE483BE04E99978EC605DB /* Pods-Mendel_Tests-dummy.m */,
+				A320C8E3FC1193C1EE70AF2766A79907 /* Pods-Mendel_Tests-frameworks.sh */,
+				896E93E2DCABDE574A7DA96162AB4BE7 /* Pods-Mendel_Tests-resources.sh */,
+				0E8418C22C3F0EF9271836731C0C3BF0 /* Pods-Mendel_Tests-umbrella.h */,
+				4AEB182C9BB075BC28F7EE05CDFFE645 /* Pods-Mendel_Tests.debug.xcconfig */,
+				FB4009A84A24E69BB6DD135D00EB5DC3 /* Pods-Mendel_Tests.release.xcconfig */,
+			);
+			name = "Pods-Mendel_Tests";
+			path = "Target Support Files/Pods-Mendel_Tests";
+			sourceTree = "<group>";
+		};
+		457424ED989EB725D9E953AE01216A6E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE74EBFC9C29D96FCB969F01CFDAE284 /* Mendel.framework */,
+				86B706903C110662B8724365B7F25DAE /* Pods_Mendel_Example.framework */,
+				1C5D98FADE30A406D7190B7BA5EDF3C6 /* Pods_Mendel_Tests.framework */,
+				D7B27691471EB749948CD19CBD2C2332 /* Then.framework */,
+				33EFEFDE37DF5D629924B36F4026E43B /* TinyConstraints.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		470831D5C20BC9CFD5B780F218631AF2 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8343577F8551A8A6CB7BE1D3331A8411 /* Info.plist */,
+				47B7A9F190198F920F6EE0D3BADEB4BA /* Then.modulemap */,
+				5CC8C10CFA3E6B9AA42413F82B8665D4 /* Then.xcconfig */,
+				B859035389A0793D751614E733B898B8 /* Then-dummy.m */,
+				7B976155EFD712C63B525EA862F7364F /* Then-prefix.pch */,
+				4EC9C6F80269DBEB50E6834E6A9B4324 /* Then-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Then";
+			sourceTree = "<group>";
+		};
+		5E0D919E635D23B70123790B8308F8EF /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		7BBAF377CC60DB94167F2D43B8FBAC20 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1D083DDB334E84F9BD8EEAEDFAF8203A /* Mendel */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				7BBAF377CC60DB94167F2D43B8FBAC20 /* Development Pods */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				19825ACFC4D434C71FA99D59B43EAF4C /* Pods */,
+				457424ED989EB725D9E953AE01216A6E /* Products */,
+				7F021D4B3472EAF8629874FCB24F68EE /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		7F021D4B3472EAF8629874FCB24F68EE /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				11A1742BBCBB52AEE1CC6C41AA4272F1 /* Pods-Mendel_Example */,
+				24573B437ECF0E114ADE26C1346EAA36 /* Pods-Mendel_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		9DDCB22B7496CA827805EC50CF3B9FF7 /* Then */ = {
+			isa = PBXGroup;
+			children = (
+				8889488CF7A5A25571F95CF2E7A0835A /* Then.swift */,
+				470831D5C20BC9CFD5B780F218631AF2 /* Support Files */,
+			);
+			name = Then;
+			path = Then;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5E0D919E635D23B70123790B8308F8EF /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D133D200C5EFE4C5A5CB620EEFD18CB7 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				161C06AC7053126A7C3CD3CB4D0A1D98 /* Info.plist */,
+				01684089E1C10B6AADCD914A5946251D /* Mendel.modulemap */,
+				A9B130ACA4CA2E9B0FFFDABF2F037587 /* Mendel.xcconfig */,
+				097574287E75D3B3BEF65564B8470698 /* Mendel-dummy.m */,
+				136C0F7C2E1D9916E868663C41D4386B /* Mendel-prefix.pch */,
+				AF776F32E03DB7B6407CA07C89767799 /* Mendel-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/Mendel";
+			sourceTree = "<group>";
+		};
+		DC041D1F9B344791E55316047F10DDCA /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A9B1C8E8DDE188382CA64CB27649D5AE /* Info.plist */,
+				DAD89217E5535B6951AEF6679D3D5EC5 /* TinyConstraints.modulemap */,
+				FDC08D53427CFEB6813555988590AEC3 /* TinyConstraints.xcconfig */,
+				52924B4F9BF56D2B1964CF892EB37758 /* TinyConstraints-dummy.m */,
+				7C8F2895EEC96FDA2899CF9252A1B97C /* TinyConstraints-prefix.pch */,
+				30A0C778E7B13FEA748CD7E53A72BC22 /* TinyConstraints-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/TinyConstraints";
+			sourceTree = "<group>";
+		};
+		EECF6941D99E1F240B3A6D934A746BBD /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				2A4CC1936785F86695FACEE3D0D47FD3 /* Mendel.podspec */,
+				11BFAA6BEE6CE3420EC4926F385146EF /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		07E5D11D5A2A73F3A40EFC777607A77A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C6D826BB179956D4CE02FD7F77AAAEE /* Pods-Mendel_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F1943F51456BE7F8381DCAE1573868B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				70E1551200DAC8C13A2922BC2C3D0719 /* Then-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43002EB692E7088610AB4E28A18B684A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				109FD8067515B2DCD51AC92C78BA9BB0 /* TinyConstraints-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45984248050E998563CFD7EAFCEE6852 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1B9862B8528B2D547D665438E26E088 /* Mendel-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD9F34FBD6C61D739D29D2326E74D487 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B4B5F9A093B4830AB4C533C87153EAB /* Pods-Mendel_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0CD60B3BE007ED040DD1BF94ED6D5345 /* Mendel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8907ACD11DC5C9A6D123D33BB3D85DB3 /* Build configuration list for PBXNativeTarget "Mendel" */;
+			buildPhases = (
+				45984248050E998563CFD7EAFCEE6852 /* Headers */,
+				A94A0ADB570CB1F52ED853325DEDCEA7 /* Sources */,
+				A9509FBEEA884107AB630CFF461A6AFF /* Frameworks */,
+				AEB6C48152806FB8D25E9597C384A47F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Mendel;
+			productName = Mendel;
+			productReference = CE74EBFC9C29D96FCB969F01CFDAE284 /* Mendel.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		0DBBE927292782F3CDCA07E298B9D21A /* Pods-Mendel_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03540645C5385FC16A27A20B8D08387A /* Build configuration list for PBXNativeTarget "Pods-Mendel_Tests" */;
+			buildPhases = (
+				07E5D11D5A2A73F3A40EFC777607A77A /* Headers */,
+				C6AE628D5999098F839632C7762900AE /* Sources */,
+				A0C1836DFE918421838F95A80BCD24DE /* Frameworks */,
+				5420861CB6FE4328925FD9F953F1B27A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				43AD0301F9083643EF8ED883E5E2C4CB /* PBXTargetDependency */,
+			);
+			name = "Pods-Mendel_Tests";
+			productName = "Pods-Mendel_Tests";
+			productReference = 1C5D98FADE30A406D7190B7BA5EDF3C6 /* Pods_Mendel_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		12E9A8A4F52AC5175F875FA39B6C0B26 /* TinyConstraints */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A985E796E4D842AA48263B0867462494 /* Build configuration list for PBXNativeTarget "TinyConstraints" */;
+			buildPhases = (
+				43002EB692E7088610AB4E28A18B684A /* Headers */,
+				5E2709AE48D1D76ADD1A80BB01978040 /* Sources */,
+				137ED1662ACF41F9A1C6AA5E5C5F5993 /* Frameworks */,
+				3DF8F11CAA896C054DFF2DB54E6E9549 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TinyConstraints;
+			productName = TinyConstraints;
+			productReference = 33EFEFDE37DF5D629924B36F4026E43B /* TinyConstraints.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		783FBEAAAFB5AA102445DD493F13BBBF /* Pods-Mendel_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BAAAA0A9C9357EE6D37EE9E5975D6F37 /* Build configuration list for PBXNativeTarget "Pods-Mendel_Example" */;
+			buildPhases = (
+				FD9F34FBD6C61D739D29D2326E74D487 /* Headers */,
+				98BB83E186A5684C59F81348BE879E45 /* Sources */,
+				AD7378EEEBE9DA37A396EFD1ADDED892 /* Frameworks */,
+				579B2174E36217959A08494DFE6A8F1F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C84A33694F479DD5803AE84E8ADC97F6 /* PBXTargetDependency */,
+				D6E6705E9075127E201B26261DEF9DA2 /* PBXTargetDependency */,
+				D7B710B217DF892793D84ECB199C489E /* PBXTargetDependency */,
+			);
+			name = "Pods-Mendel_Example";
+			productName = "Pods-Mendel_Example";
+			productReference = 86B706903C110662B8724365B7F25DAE /* Pods_Mendel_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F3872C71EAC01A62743F609A69EB8332 /* Then */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED6C29142CB29D1401C3433D94756DD1 /* Build configuration list for PBXNativeTarget "Then" */;
+			buildPhases = (
+				3F1943F51456BE7F8381DCAE1573868B /* Headers */,
+				1E28F0BF1475FFCF77CFF23A6B4FB7F3 /* Sources */,
+				DA56A725632F31663EA6DC5F1D379D84 /* Frameworks */,
+				E9A4EAD05B60B14CF2B363137213E478 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Then;
+			productName = Then;
+			productReference = D7B27691471EB749948CD19CBD2C2332 /* Then.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 457424ED989EB725D9E953AE01216A6E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0CD60B3BE007ED040DD1BF94ED6D5345 /* Mendel */,
+				783FBEAAAFB5AA102445DD493F13BBBF /* Pods-Mendel_Example */,
+				0DBBE927292782F3CDCA07E298B9D21A /* Pods-Mendel_Tests */,
+				F3872C71EAC01A62743F609A69EB8332 /* Then */,
+				12E9A8A4F52AC5175F875FA39B6C0B26 /* TinyConstraints */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3DF8F11CAA896C054DFF2DB54E6E9549 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5420861CB6FE4328925FD9F953F1B27A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		579B2174E36217959A08494DFE6A8F1F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AEB6C48152806FB8D25E9597C384A47F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E9A4EAD05B60B14CF2B363137213E478 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1E28F0BF1475FFCF77CFF23A6B4FB7F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3BFF155A9E42246D167186BFFD2A9801 /* Then-dummy.m in Sources */,
+				7B5238D2A40FF017E86A45C794543767 /* Then.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E2709AE48D1D76ADD1A80BB01978040 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B040B51AE47060E84A784082DBC2F8A1 /* Abstraction.swift in Sources */,
+				6DE27BA4E542DB1953D5303C2921F133 /* Constrainable.swift in Sources */,
+				534264A35535F7E2BDA1D8B57C88A758 /* Constraints.swift in Sources */,
+				A3D210AF4DC2320188CEE7113DD1D5A0 /* Stack.swift in Sources */,
+				65116AE453CE1BE1D878325AD4A16C32 /* TinyConstraints+superview.swift in Sources */,
+				34E408B57E55F9F72DBFFE9CE00306B2 /* TinyConstraints-dummy.m in Sources */,
+				7E3400D192652E5E4C6D5F413DC65798 /* TinyConstraints.swift in Sources */,
+				5C5142AA46DF3651E1087E98B2E4128B /* TinyEdgeInsets.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98BB83E186A5684C59F81348BE879E45 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CED4B90AD644D84849571AA8DF87B512 /* Pods-Mendel_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A94A0ADB570CB1F52ED853325DEDCEA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A485C9C0F037BD08796C6D482B5DADD /* Array+extensions.swift in Sources */,
+				199329794CB3FB09FC7CCB4F4D0FDA5C /* Dice.swift in Sources */,
+				BA3F5AC9CB0C49A4271450B8BE986F47 /* Engine.swift in Sources */,
+				EA9E6681FC6FF3216A97827119CF226F /* Mendel-dummy.m in Sources */,
+				68532E916CF31CB29127A0DE80CA6451 /* Operators.swift in Sources */,
+				0A8D61A32BBA392C0C942FA4F1671B87 /* Selection.swift in Sources */,
+				EDD75CB406A0D62DD03F6CC0C7F38EC9 /* Stats.swift in Sources */,
+				141FE5E1FC6D7A5BC4A8D1D6A26078B6 /* Termination.swift in Sources */,
+				2C20888E77E85DBB7A156D219CEEE08A /* Utilities.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6AE628D5999098F839632C7762900AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8692E2218FBD2C1D7579FD928581739A /* Pods-Mendel_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		43AD0301F9083643EF8ED883E5E2C4CB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Mendel_Example";
+			target = 783FBEAAAFB5AA102445DD493F13BBBF /* Pods-Mendel_Example */;
+			targetProxy = BC9CF28CD36BC9C83DC7AEBAD9EC51CB /* PBXContainerItemProxy */;
+		};
+		C84A33694F479DD5803AE84E8ADC97F6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Mendel;
+			target = 0CD60B3BE007ED040DD1BF94ED6D5345 /* Mendel */;
+			targetProxy = DA701E8628656EBAE015E86283A12846 /* PBXContainerItemProxy */;
+		};
+		D6E6705E9075127E201B26261DEF9DA2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Then;
+			target = F3872C71EAC01A62743F609A69EB8332 /* Then */;
+			targetProxy = 3B87F1A67EEB871326746CF315A90336 /* PBXContainerItemProxy */;
+		};
+		D7B710B217DF892793D84ECB199C489E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TinyConstraints;
+			target = 12E9A8A4F52AC5175F875FA39B6C0B26 /* TinyConstraints */;
+			targetProxy = 3E7F5BC29ABBE74204EC8A8B831D310E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		20619C5CA3BF27E31B2AE16DFD71E185 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB4009A84A24E69BB6DD135D00EB5DC3 /* Pods-Mendel_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Mendel_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Mendel_Tests/Pods-Mendel_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		33433EE8206768C7B14D0CFB783B3699 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4AEB182C9BB075BC28F7EE05CDFFE645 /* Pods-Mendel_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Mendel_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Mendel_Tests/Pods-Mendel_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3824FB9EF8C5CA5457B663D850E2970A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1733E2BF7B93A4E0702245304AE4923F /* Pods-Mendel_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Mendel_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Mendel_Example/Pods-Mendel_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		448657742575B8E437ECAB6ACC638705 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FDC08D53427CFEB6813555988590AEC3 /* TinyConstraints.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/TinyConstraints/TinyConstraints-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TinyConstraints/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/TinyConstraints/TinyConstraints.modulemap";
+				PRODUCT_MODULE_NAME = TinyConstraints;
+				PRODUCT_NAME = TinyConstraints;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		535E70F66E9D27E44B63E572CC2D0123 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CC8C10CFA3E6B9AA42413F82B8665D4 /* Then.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Then/Then-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Then/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Then/Then.modulemap";
+				PRODUCT_MODULE_NAME = Then;
+				PRODUCT_NAME = Then;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		56A05ADD3BABDA1B56D1F979845809B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		813DA70DB09A99C3F2ADCEF7FE1D22B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9B130ACA4CA2E9B0FFFDABF2F037587 /* Mendel.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Mendel/Mendel-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Mendel/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Mendel/Mendel.modulemap";
+				PRODUCT_MODULE_NAME = Mendel;
+				PRODUCT_NAME = Mendel;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8966D5CF28376720DD29E18D00D5136F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAD1F9C779026B3636594C5F2757D5BC /* Pods-Mendel_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Mendel_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Mendel_Example/Pods-Mendel_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B33C61657A29639A1ED408641D55D7E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9B130ACA4CA2E9B0FFFDABF2F037587 /* Mendel.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Mendel/Mendel-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Mendel/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Mendel/Mendel.modulemap";
+				PRODUCT_MODULE_NAME = Mendel;
+				PRODUCT_NAME = Mendel;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		BC974349BA10940DEEDC1EE4CE849CA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CC8C10CFA3E6B9AA42413F82B8665D4 /* Then.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Then/Then-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Then/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Then/Then.modulemap";
+				PRODUCT_MODULE_NAME = Then;
+				PRODUCT_NAME = Then;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		BEFDB93BF207328A04F1220475D02C3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		DBCDBEDAE40E1567676C25448E3EF9A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FDC08D53427CFEB6813555988590AEC3 /* TinyConstraints.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/TinyConstraints/TinyConstraints-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TinyConstraints/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/TinyConstraints/TinyConstraints.modulemap";
+				PRODUCT_MODULE_NAME = TinyConstraints;
+				PRODUCT_NAME = TinyConstraints;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		03540645C5385FC16A27A20B8D08387A /* Build configuration list for PBXNativeTarget "Pods-Mendel_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33433EE8206768C7B14D0CFB783B3699 /* Debug */,
+				20619C5CA3BF27E31B2AE16DFD71E185 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEFDB93BF207328A04F1220475D02C3B /* Debug */,
+				56A05ADD3BABDA1B56D1F979845809B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8907ACD11DC5C9A6D123D33BB3D85DB3 /* Build configuration list for PBXNativeTarget "Mendel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				813DA70DB09A99C3F2ADCEF7FE1D22B3 /* Debug */,
+				B33C61657A29639A1ED408641D55D7E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A985E796E4D842AA48263B0867462494 /* Build configuration list for PBXNativeTarget "TinyConstraints" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBCDBEDAE40E1567676C25448E3EF9A4 /* Debug */,
+				448657742575B8E437ECAB6ACC638705 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BAAAA0A9C9357EE6D37EE9E5975D6F37 /* Build configuration list for PBXNativeTarget "Pods-Mendel_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3824FB9EF8C5CA5457B663D850E2970A /* Debug */,
+				8966D5CF28376720DD29E18D00D5136F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ED6C29142CB29D1401C3433D94756DD1 /* Build configuration list for PBXNativeTarget "Then" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				535E70F66E9D27E44B63E572CC2D0123 /* Debug */,
+				BC974349BA10940DEEDC1EE4CE849CA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

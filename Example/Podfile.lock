@@ -1,0 +1,27 @@
+PODS:
+  - Mendel (0.1.0)
+  - Then (2.4.0)
+  - TinyConstraints (3.3.0)
+
+DEPENDENCIES:
+  - Mendel (from `../`)
+  - Then
+  - TinyConstraints
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Then
+    - TinyConstraints
+
+EXTERNAL SOURCES:
+  Mendel:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Mendel: 5440babf3a8acd3fadb42e5bdca0029aec3f8dac
+  Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
+  TinyConstraints: 6d0e495e72372556b31a0cc9b60983d5f780ef2f
+
+PODFILE CHECKSUM: 547866b09e48644cb917803dbfa222bdfb142f99
+
+COCOAPODS: 1.5.3

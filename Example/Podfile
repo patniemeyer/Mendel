@@ -1,0 +1,13 @@
+use_frameworks!
+
+target 'Mendel_Example' do
+  pod 'Mendel', :path => '../'
+  pod 'Then'
+  pod 'TinyConstraints'
+
+  target 'Mendel_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
