@@ -22,8 +22,7 @@ public class ImageMatching
     
     var engine: SimpleEngine<Painting>?
     
-    public init () {
-    }
+    public init () { }
     
     func run() {
         let engine = SimpleEngine<Painting>(

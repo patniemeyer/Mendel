@@ -217,7 +217,7 @@ public func sortEvaluatedPopulation<I : IndividualType>(population: [Score<I>], 
 //A Simple generational genetic engine implementation
 public class SimpleEngine<Individual : IndividualType> : Engine
 {
-    let threads = 8
+    let threads: Int
     
     //These type definitions have to be repeated here, even though we already
     //described them in Engine :( Not sure why...
@@ -245,17 +245,20 @@ public class SimpleEngine<Individual : IndividualType> : Engine
     ////////////////////////////////////////////////////////////////////////////
     
     public init(
+        threads: Int = 8,
         factory: @escaping Factory,
         evaluation: @escaping Evaluation,
         fitnessKind: FitnessKind,
         selection: @escaping Selection,
-        op: @escaping Operator) {
-            self.factory = factory
-            self.evaluation = evaluation
-            self.fitnessKind = fitnessKind
-            self.selection = selection
-            self.op = op
-            self.config = Configuration()
+        op: @escaping Operator)
+    {
+        self.threads = threads
+        self.factory = factory
+        self.evaluation = evaluation
+        self.fitnessKind = fitnessKind
+        self.selection = selection
+        self.op = op
+        self.config = Configuration()
     }
     
     public var config: Configuration
