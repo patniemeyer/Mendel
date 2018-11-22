@@ -16,7 +16,7 @@ Mendel is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'Mendel', :git => 'https://github.com/presentco/Mendel.git'
+pod 'Mendel', :git => 'https://github.com/patniemeyer/Mendel.git'
 ```
 
 ## Author
